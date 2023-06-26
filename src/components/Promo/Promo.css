@@ -1,10 +1,10 @@
-.hero {
+.promo {
     background: #073042;
     position: relative;
     height: 524px;
 }
 
-.hero__background {
+.promo__background {
     position: absolute;
     width: 320px;
     height: 320px;
@@ -13,7 +13,7 @@
     left: 480px;
 }
 
-.hero__title {
+.promo__title {
     color: #FFF;
     text-align: center;
     font-size: 50px;
