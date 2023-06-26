@@ -1,0 +1,26 @@
+.hero {
+    background: #073042;
+    position: relative;
+    height: 524px;
+}
+
+.hero__background {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+
+    top: 82px;
+    left: 480px;
+}
+
+.hero__title {
+    color: #FFF;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 400;
+    line-height: 58px;
+    letter-spacing: -2px;
+
+    padding: 184px;
+    margin: 0;
+}
