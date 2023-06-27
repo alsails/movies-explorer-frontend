@@ -6,8 +6,8 @@
 
 .promo__background {
     position: absolute;
-    width: 320px;
-    height: 320px;
+    max-width: 320px;
+    max-height: 320px;
 
     top: 82px;
     left: 480px;

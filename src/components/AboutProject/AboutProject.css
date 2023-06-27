@@ -1,0 +1,63 @@
+.aboutProject__container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-bottom: 110px;
+}
+
+.aboutProject__info {
+    display: grid;
+    grid-template-columns: repeat(2, calc(100% / 2));
+    row-gap: 26px;
+
+    margin-top: 70px;
+}
+
+.aboutProject__info__text {
+    margin: 0;
+    padding: 0;
+
+    color: #000;
+    font-size: 14px;
+    font-weight: 400px;
+    line-height: 20px;
+}
+
+.aboutProject__info__text:nth-child(-n+2) {
+    font-size: 20px;
+    letter-spacing: -0.8px;
+}
+
+.aboutProject__time {
+    display: grid;
+    grid-template-columns: calc(100% / 5) calc(100% - (100% / 5));
+    row-gap: 14px;
+
+    margin-top: 110px;
+}
+
+.aboutProject__time__text {
+    color: #A0A0A0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+
+    padding: 0;
+    margin: 0;
+}
+
+.aboutProject__time__text:nth-child(-n+2) {
+    padding: 9px 0;
+    color: #000;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Inter;
+}
+
+.aboutProject__time .aboutProject__time__text:first-of-type {
+    background-color: #2BE080;
+}
+
+.aboutProject__time .aboutProject__time__text:nth-child(2) {
+    background-color: #F2F2F2;
+}
