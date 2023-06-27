@@ -3,7 +3,7 @@ import './BlockTitle.css';
 function BlockTitle({title}) {
   return (
     <section className="blockTitle">
-       <p className='blockTitle__title'>{title}</p>
+       <h2 className='blockTitle__title'>{title}</h2>
     </section>
   );
 }
