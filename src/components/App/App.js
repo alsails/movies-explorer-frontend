@@ -1,21 +1,14 @@
-import AboutMe from '../AboutMe/AboutMe';
-import AboutProject from '../AboutProject/AboutProject';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
-import NavTab from '../NavTab/NavTab';
-import Promo from '../Promo/Promo';
-import Techs from '../Techs/Techs';
+import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import Footer from '../Footer/Footer'
 import './App.css';
 
 function App() {
+  const isLogined = true
   return (
     <div className="page">
-      <Header />
-      <Promo />
-      <NavTab />
-      <AboutProject />
-      <Techs />
-      <AboutMe />
+      {/* <Main /> */}
+      <Movies isLogined={isLogined} />
       <Footer />
     </div>
   );
