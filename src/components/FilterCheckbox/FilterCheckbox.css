@@ -54,6 +54,7 @@
     -webkit-transition-duration: 300ms;
     transition-duration: 300ms;
     top: 2px;
+    left: 2px;
 }
 
 .switchOn , .switchOn:before {
