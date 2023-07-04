@@ -1,6 +1,5 @@
 .more {
-    max-width: 1140px;
-    align-items: center;
+    max-width: 320px;
 
     margin: 0 auto;
     padding: 50px 0 80px;
@@ -21,4 +20,8 @@
     margin: 0;
 
     border: none;
+}
+
+.more__button:hover {
+    cursor: pointer;
 }

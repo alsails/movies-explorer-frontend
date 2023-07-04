@@ -13,11 +13,13 @@ function FilterCheckbox() {
 
   return (
     <section className='filterCheckbox'>
-        <p className='filterCheckbox__text'>Короткометражки</p>
-        <label>
-            <input type="checkbox" name="checkboxName" className="checkbox"/>
-            <div className={`switch ${isActive ? 'switchOn' : ''}`} onClick={switchOn}></div>
-        </label>
+        <div className='filterCheckbox__container' >
+            <label>
+                <input type="checkbox" name="checkboxName" className="checkbox"/>
+                <div className={`switch ${isActive ? 'switchOn' : ''}`} onClick={switchOn}></div>
+            </label>
+            <p className='filterCheckbox__text'>Короткометражки</p>
+        </div>
     </section>
   );
 }

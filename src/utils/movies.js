@@ -9,7 +9,7 @@ import eighth from '../images/movies/8.png'
 import ninth from '../images/movies/9.png'
 import tenth from '../images/movies/10.png'
 
-export const movies = [
+const movies = [
     {
         name: '33 слова о дизайне',
         img: first,
@@ -113,3 +113,5 @@ export const movies = [
         likes: true,
     },
 ]
+
+export default movies

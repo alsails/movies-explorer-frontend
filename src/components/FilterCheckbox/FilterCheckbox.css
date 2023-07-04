@@ -1,8 +1,15 @@
 .filterCheckbox {
+    border-left: 1px solid #CBCBCB;
+
+    margin: 16px 0 16px 19px;
+}
+
+.filterCheckbox__container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
-    margin-top: 15px;
+    padding: 10px 0 10px 29px;
 }
 
 .filterCheckbox__text {
@@ -12,7 +19,7 @@
     line-height: 18px;
 
     margin: 0;
-    padding: 0 14px 0 0;
+    padding: 0 30px 0 14px;
 }
 
 .checkbox{display:none}
