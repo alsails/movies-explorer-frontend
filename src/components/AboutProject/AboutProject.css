@@ -18,8 +18,8 @@
 
     color: #000;
     font-size: 14px;
-    font-weight: 400px;
-    line-height: 20px;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .aboutProject__info__text:nth-child(-n+2) {
@@ -60,4 +60,34 @@
 
 .aboutProject__time .aboutProject__time__text:nth-child(2) {
     background-color: #F2F2F2;
+}
+
+@media screen and (max-width: 1164px) {
+    .aboutProject__container {
+        width: calc(100% - 50px*2);
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    .aboutProject__info {
+        column-gap: 30px;
+        grid-template-columns: repeat(2, calc((100% - 30px) / 2));
+    }
+
+    .aboutProject__container { 
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aboutProject__info__text {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .aboutProject__time {
+        margin-top: 93px;
+    }
 }

@@ -53,3 +53,11 @@
 
     text-decoration: none;
 }
+
+@media screen and (max-width: 768px) {
+    .footer__conatiner {
+        max-width: calc(100% - 30px * 2);
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}

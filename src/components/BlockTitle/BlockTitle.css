@@ -1,6 +1,6 @@
 .blockTitle {
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 110px;
     border-bottom: 1px solid #000;
 }
 
@@ -12,4 +12,10 @@
 
     margin: 0;
     padding: 0 0 23px;
+}
+
+@media screen and (max-width: 768px) {
+    .blockTitle {
+        padding-top: 90px;
+    }
 }

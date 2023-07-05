@@ -1,5 +1,5 @@
 .header {
-    margin: 18px 0 36px;
+    margin: 18px auto 36px;
 }
 
 .header__container {
@@ -107,4 +107,12 @@
 
 .header__links__profile:hover {
     cursor: pointer;
+}
+
+@media screen and (max-width: 1158px) {
+    .header__container {
+        width: calc(100% - 30px*2);
+        margin-left: 30px;
+        margin-right: 30px;
+    }
 }

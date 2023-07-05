@@ -1,6 +1,7 @@
 .aboutMe__container {
     max-width: 1140px;
     margin: 0 auto;
+    padding-bottom: 125px;
 }
 
 .aboutMe__profile__container {
@@ -37,7 +38,6 @@
 .aboutMe__profile__container__info__profession {
     color: #000;
     font-size: 18px;
-    font-weight: 400;
     font-weight: 500;
     line-height: 20px;
 
@@ -72,7 +72,9 @@
     font-weight: 400;
     line-height: 20px;
 
-    padding: 100px 0 50px;
+    padding: 100px 0 
+    30px;
+    margin: 0;
 }
 
 .aboutMe__portfolio__link {
@@ -100,4 +102,74 @@
     padding: 20px 0 19px;
 
     text-decoration: none;
+}
+
+.aboutMe__portfolio__link__name:last-of-type {
+    padding-bottom: 0px;
+}
+
+.aboutMe__portfolio__link__arrow {
+    width: 15px;
+    height: 100%;
+
+    padding: 40px 7px 0;
+}
+
+@media screen and (max-width: 1164px) {
+    .aboutMe__container {
+        width: calc(100% - 50px*2);
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+@media screen and (max-width: 1055px) {
+    .aboutMe__profile__container {
+        column-gap: 49px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .aboutMe__container {
+        padding-bottom: 90px;
+    }
+    
+    .aboutMe__profile__container__info__name {
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: -1.6px;
+        padding: 0 0 16px;
+    }
+
+    .aboutMe__profile__container__info__profession {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0 0 20px;
+    }
+
+    .aboutMe__profile__container__info__description {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0 0 87px;
+
+        max-width: 364px;
+    }
+
+    .aboutMe__profile__container__avatar {
+        width: 255px;
+        height: 307px;
+    }
+
+    .aboutMe__portfolio {
+        padding-top: 90px;
+    }
+
+    .aboutMe__portfolio__link__name {
+        font-size: 28px;
+    }
+
+    .aboutMe__portfolio__link__arrow {
+        padding-left: 6px;
+        padding-right: 6px;
+    }
 }
