@@ -19,3 +19,15 @@
         padding-top: 90px;
     }
 }
+
+@media screen and (max-width: 360px) {
+    .blockTitle {
+        padding-top: 70px;
+    }
+
+    .blockTitle__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 28px;
+    }
+}

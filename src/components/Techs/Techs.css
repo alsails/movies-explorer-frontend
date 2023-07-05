@@ -1,5 +1,7 @@
 .techs {
     background: #F5F5F5;
+
+    margin: 0 auto;
 }
 
 .techs__container {
@@ -66,8 +68,6 @@
 @media screen and (max-width: 1164px) {
     .techs {
         width: calc(100% - 50px*2);
-        padding-left: 50px;
-        padding-right: 50px;
     }
 }
 
@@ -92,5 +92,44 @@
 
     .techs__container__technologies {
         padding: 0 0 90px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .techs {
+        width: calc(100% - 18px*2);
+        background-color: transparent;
+    }
+
+    .techs__container__title {
+        padding: 60px 0 24px;
+
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: normal;
+    }
+
+    .techs__container__text {
+        padding: 0 0 50px;
+
+        font-size: 11px;
+        line-height: 16px;
+        letter-spacing: -0.44px;
+    }
+
+    .techs__container__technologies {
+        max-width: 178px;
+        margin: 0 auto;
+        padding: 0 0 70px;
+
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        column-gap: 10px;
+        row-gap: 10px;
+    }
+
+    .techs__container__technology  {
+        max-width: 84px;
     }
 }

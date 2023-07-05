@@ -1,6 +1,6 @@
 import "./Header.css";
 import logoMain from "../../images/icons/logo.svg";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
     const [isWidth, setisWidth] = useState(window.innerWidth);

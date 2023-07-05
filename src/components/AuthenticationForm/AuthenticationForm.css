@@ -1,16 +1,12 @@
 .authenticationForm {
     max-width: 396px;
     margin: 0 auto;
+
     position: relative;
-    height: 100vh;
 }
 
 .authenticationForm__container {
     width: 100%;
-    height: 560px;
-
-    top: calc((100vh - 560px) / 2);
-    position: absolute;
 }
 
 .authenticationForm__title {
@@ -132,10 +128,26 @@
     cursor: pointer;
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 450px) {
     .authenticationForm {
-        margin: 0;
-        top: 2px;
-        position: absolute;
+        max-width: calc(100% - 30px * 2);
     }
-} */
+
+    .authenticationForm__container {
+        margin-top: 50px;
+        height: 694px;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .authenticationForm__img {
+        width: 38px;
+    }
+
+    .authenticationForm__title {
+        margin: 50px auto 80px;
+    }
+}

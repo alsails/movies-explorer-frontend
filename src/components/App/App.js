@@ -1,10 +1,10 @@
-// import Main from '../Main/Main';
+import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
-// import Footer from '../Footer/Footer';
+import Footer from '../Footer/Footer';
 import Header from "../Header/Header";
-// import Login from '../Login/Login';
+import Login from '../Login/Login';
 import NotFound from "../NotFound/NotFound";
-// import Register from '../Register/Register';
+import Register from '../Register/Register';
 
 import "./App.css";
 import PopupMenu from "../PopupMenu/PopupMenu";
@@ -12,7 +12,7 @@ import { useState } from "react";
 
 function App() {
     const [isPopupMenu, setIsPopupMenu] = useState(false);
-    const isLogined = false;
+    const isLogined = true;
 
     function openPopupMenu() {
         setIsPopupMenu(true);
@@ -26,11 +26,11 @@ function App() {
 
     return (
         <div className="page">
-            <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/>
+            {/* <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/> */}
             {/* <Main/> */}
             {/* <Movies /> */}
             {/* <Footer /> */}
-            {/* <Login /> */}
+            <Login />
             {/* <Register /> */}
             {/* <NotFound /> */}
             <PopupMenu isOpened={isPopupMenu}/>

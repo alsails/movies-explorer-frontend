@@ -22,18 +22,19 @@ function AboutProject() {
         <BlockTitle title='О проекте' />
         <div className='aboutProject__info'>
           {
-            texts.map((text) => {
+            texts.map((text, index) => {
               return (
-                <p className='aboutProject__info__text'>{text}</p>
+                <p className={`aboutProject__info__text ${index === 2 ? 'aboutProject__info__text__third' : ''}`} key={index}>{text}</p>
               )
             })
           }
         </div>
         <div className='aboutProject__time'>
         {
-          timiesInfo.map((timeInfo) => {
+          timiesInfo.map((timeInfo, index) => {
+            console.log(index === 3)
             return (
-              <p className='aboutProject__time__text'>{timeInfo}</p>
+              <p className={`aboutProject__time__text`} key={index}>{timeInfo}</p>
             )
           })
         }

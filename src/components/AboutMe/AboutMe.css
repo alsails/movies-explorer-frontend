@@ -72,8 +72,7 @@
     font-weight: 400;
     line-height: 20px;
 
-    padding: 100px 0 
-    30px;
+    padding: 100px 0 50px;
     margin: 0;
 }
 
@@ -83,10 +82,13 @@
     justify-content: space-between;
 
     border-bottom: 1px solid #E6E6E6;
+
+    padding-bottom: 19px;
 }
 
 .aboutMe__portfolio__link:last-of-type {
     border: none;
+    padding-bottom: 0;
 }
 
 .aboutMe__portfolio__link__name {
@@ -99,13 +101,13 @@
     letter-spacing: -1.2px;
 
     margin: 0;
-    padding: 20px 0 19px;
+    padding: 20px 0 0;
 
     text-decoration: none;
 }
 
-.aboutMe__portfolio__link__name:last-of-type {
-    padding-bottom: 0px;
+.aboutMe__portfolio__link__name:first {
+    padding: 0;
 }
 
 .aboutMe__portfolio__link__arrow {
@@ -115,11 +117,13 @@
     padding: 40px 7px 0;
 }
 
+.aboutMe__portfolio__link__arrow:hover {
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1164px) {
     .aboutMe__container {
         width: calc(100% - 50px*2);
-        padding-left: 50px;
-        padding-right: 50px;
     }
 }
 
@@ -171,5 +175,65 @@
     .aboutMe__portfolio__link__arrow {
         padding-left: 6px;
         padding-right: 6px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .aboutMe__container {
+        width: calc(100% - 14px*2);
+        padding-bottom: 70px;
+    }
+
+    .aboutMe__profile__container {
+        flex-direction: column;
+
+        margin-top: 60px;
+    }
+
+    .aboutMe__profile__container__avatar {
+        order: -1;
+        margin: 0 auto 40px;
+
+        width: 100%;
+        height: 352px;
+    }
+
+    .aboutMe__profile__container__info__name {
+        font-size: 30px;
+        letter-spacing: -1.2px;
+        line-height: normal;
+
+        padding-bottom: 20px;
+    }
+
+    .aboutMe__profile__container__info__profession {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .aboutMe__profile__container__info__description {
+        font-size: 11px;
+        line-height: 16px;
+
+        padding-bottom: 40px;
+    }
+
+    .aboutMe__portfolio {
+        padding: 70px 0 40px;
+
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .aboutMe__portfolio__link__name {
+        font-size: 18px;
+        line-height: 28px;
+        letter-spacing: -0.72px;
+
+        padding: 20px 0 0;
+    }
+
+    .aboutMe__portfolio__link__arrow {
+        padding-top: 28px;
     }
 }

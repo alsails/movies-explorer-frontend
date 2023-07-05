@@ -85,3 +85,27 @@
 
     margin: 0 auto 90px;
 }
+
+@media screen and (max-width: 360px) {
+    .popupMenu__container {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .popupMenu__links {
+        margin: 144px 0 0;
+    }
+
+    .popupMenu__link {
+        padding-bottom: 24px;
+    }
+
+    .popupMenu__link_active {
+        padding-bottom: 7px; 
+        margin-bottom: 15px;
+    }
+
+    .popupMenu__button {
+        margin-bottom: 46px;
+    }
+}

@@ -8,12 +8,12 @@ import SearchForm from "../SearchForm/SearchForm";
 function Movies() {
   return (
     <>
-       <SearchForm />
+       {/* <SearchForm /> */}
        {/* <Preloader /> */}
-       <MoviesCardList />
-       <More />
+       {/* <MoviesCardList /> */}
+       {/* <More /> */}
        {/* <SavedMovies /> */}
-       {/* <Profile /> */}
+       <Profile />
     </>
   );
 }

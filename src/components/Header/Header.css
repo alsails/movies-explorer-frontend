@@ -15,6 +15,10 @@
     padding: 0 44px 0 0;
 }
 
+.header__authorization {
+    margin-top: 3px;
+}
+
 .header__authorization__register {
     text-decoration: none;
     color: #000;
@@ -115,7 +119,8 @@
 	position: relative;
 	z-index:2;
 
-    padding-top: 8px;
+    margin-top: 8px;
+    margin-right: 8px;
 }
 
 .header__hamburger-menu:hover {
@@ -141,8 +146,7 @@
 }
 
 .header__hamburger-menu_active {
-    padding: 4px 0 0;
-    margin-right: -10px;
+    margin: 4px -10px 0 0 ;
 }
 
 .header__hamburger-menu_active span:nth-of-type(1) {
@@ -162,7 +166,52 @@
 @media screen and (max-width: 1158px) {
     .header__container {
         width: calc(100% - 30px*2);
-        margin-left: 30px;
-        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header {
+        margin-bottom: 32px;
+    }
+    
+    .header__authorization {
+        margin-top: 6px;
+    }
+
+    .header__container {
+        width: calc(100% - 14px*2);
+    }
+
+    .header__authorization__register {
+        font-size: 10px;
+        line-height: 16px;
+
+        margin-right: 14px;
+    }
+
+    .header__authorization__login {
+        font-size: 10px;
+        line-height: 16px;
+
+        padding: 5px 12px;
+    }
+
+    .header__hamburger-menu {
+        width: 22px;
+        height: 20.5px;
+        position: relative;
+        z-index:2;
+    
+        margin-top: 9px;
+        margin-right: 9px;
+    }
+
+    .header__hamburger-menu span {
+        width: 23px;
+        height: 2.5px;
+    }
+
+    .header__hamburger-menu_active {
+        margin: -5px -1px 0 0;
     }
 }
