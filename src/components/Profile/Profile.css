@@ -80,3 +80,22 @@
     padding: 0 0 70px;
     margin: 0;
 }
+
+@media screen and (max-width: 768px) {
+    .profile {
+        margin-top: 254px;
+        margin-bottom: 269px;
+    }
+
+    .profile__title {
+        margin-bottom: 96px;
+    }
+
+    .profile__edit{
+        margin-top: 210px;
+    }
+
+    .profile__signout {
+        padding: 0;
+    }
+}

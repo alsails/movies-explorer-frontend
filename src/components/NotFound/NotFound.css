@@ -1,8 +1,17 @@
 .notFound {
-    width: 100%;
+    max-width: 400px;
     height: 100vh;
+    margin: 0 auto;
 
     position: relative;
+}
+
+.notFound__container {
+    position: absolute;
+
+    top: calc((100vh - 394px) / 2);
+    width: 100%;
+    height: 394px;
 }
 
 .notFound__title {
@@ -11,8 +20,8 @@
     font-size: 140px;
     font-weight: 400;
 
-    padding: 246px 0 5px;
-    margin: 0 auto 0;
+    padding: 0 0 5px;
+    margin: 0 auto;
 }
 
 .notFound__description {
@@ -36,8 +45,12 @@
     font-weight: 400;
     line-height: normal;
 
-    position: absolute;
+    margin: 184px 0 0;
+    padding: 0;
 
-    bottom: 77px;
-    left: calc((100% - 42px) / 2);
+    width: 100%;
+}
+
+.notFound__return:hover {
+    cursor: pointer;
 }

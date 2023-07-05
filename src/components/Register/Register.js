@@ -15,7 +15,7 @@ function Login() {
             <input type="email" id="email-input" className="form__input" name="email" required/>
             <p className='form__lable' >Пароль</p>
             <input id="password-input" type="password" className="form__input" name="password" required />
-            <span id="input-error" className="form__error">Что-то пошло не так... </span>
+            <span id="input-error" className="form__error form__error_visible">Что-то пошло не так... </span>
         </AuthenticationForm>
     </section>
   );

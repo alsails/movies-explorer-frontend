@@ -71,3 +71,9 @@
 .switchOn:after {
     left: 18px !important;
 }
+
+@media screen and (max-width: 768px) {
+    .filterCheckbox__container {
+        padding-left: 19px;
+    }
+}
