@@ -1,6 +1,7 @@
 .authenticationForm {
     max-width: 396px;
     margin: 0 auto;
+    height: calc(100vh - 50px);
 
     position: relative;
 }
@@ -149,5 +150,17 @@
 
     .authenticationForm__title {
         margin: 50px auto 80px;
+    }
+
+    .authenticationForm__button {
+        position: absolute;
+
+        bottom: 59px;
+        margin: 0;
+    }
+
+    .authenticationForm__links {
+        position: absolute;
+        bottom: 30px;
     }
 }

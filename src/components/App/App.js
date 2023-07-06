@@ -26,11 +26,11 @@ function App() {
 
     return (
         <div className="page">
-            {/* <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/> */}
+            <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/>
             {/* <Main/> */}
             {/* <Movies /> */}
             {/* <Footer /> */}
-            <Login />
+            {/* <Login /> */}
             {/* <Register /> */}
             {/* <NotFound /> */}
             <PopupMenu isOpened={isPopupMenu}/>
