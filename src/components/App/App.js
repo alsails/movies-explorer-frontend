@@ -1,3 +1,4 @@
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import Main from '../Main/Main';
 import Movies from "../Movies/Movies";
 import Footer from '../Footer/Footer';
@@ -26,13 +27,19 @@ function App() {
 
     return (
         <div className="page">
-            <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/>
-            {/* <Main/> */}
-            {/* <Movies /> */}
-            {/* <Footer /> */}
-            {/* <Login /> */}
-            {/* <Register /> */}
-            {/* <NotFound /> */}
+            <Routes>
+                <Route path="/sign-up" element={
+                    <Register /> 
+                } />
+                <Route path="/sign-in" element={
+                    <Login /> 
+                } />
+                {/* <Header isLogined={isLogined} openPopupMenu={openPopupMenu} closeAllPopup={closeAllPopup} isOpened={isPopupMenu}/> */}
+                {/* <Main/> */}
+                {/* <Movies /> */}
+                {/* <Footer /> */}
+                {/* <NotFound /> */}
+            </Routes>
             <PopupMenu isOpened={isPopupMenu}/>
         </div>
     );
