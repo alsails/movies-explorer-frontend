@@ -19,7 +19,7 @@ function AboutMe() {
     },
   ]
   return (
-    <section className="aboutMe">
+    <section className="aboutMe" id='aboutMe'>
       <div className='aboutMe__container'>
         <BlockTitle title='Студент' />
         <div className='aboutMe__profile__container'>
@@ -36,7 +36,7 @@ function AboutMe() {
           links.map((link) => {
             return (
               <div className='aboutMe__portfolio__link'>
-                <a href={link.href} className='aboutMe__portfolio__link__name' >{link.name}</a>
+                <a href={link.href} target='_blank' className='aboutMe__portfolio__link__name' >{link.name}</a>
                 <img src={arrow} alt='Стрелка' className='aboutMe__portfolio__link__arrow' />
               </div>
             )

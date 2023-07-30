@@ -66,6 +66,11 @@
     text-decoration: none;
 }
 
+.aboutMe__profile__container__info__github:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
 .aboutMe__portfolio {
     color: #A0A0A0;
     font-size: 18px;
@@ -109,6 +114,12 @@
 .aboutMe__portfolio__link__name:first {
     padding: 0;
 }
+
+.aboutMe__portfolio__link__name:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
 
 .aboutMe__portfolio__link__arrow {
     width: 15px;

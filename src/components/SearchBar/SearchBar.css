@@ -44,7 +44,24 @@
     height: 34px;
 }
 
-@media screen and (max-width: 360px) {
+.searchBar__button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+@media screen and (max-width: 600px) {
+    .searchBar__input {
+        font-size: 15px;
+        width: calc(100% - 26px);
+        margin-right: 26px;
+    }
+
+    .searchBar__img {
+        padding: 19px 10px 19px 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .searchBar {
         width: 100%;
         border-radius: 9px;

@@ -95,6 +95,11 @@
     border: none;
 }
 
+.authenticationForm__button:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
 .authenticationForm__links {
     display: flex;
     flex-direction: row;
@@ -123,6 +128,11 @@
 
     margin: 0;
     padding: 0;
+}
+
+.authenticationForm__links__link:hover {
+    cursor: pointer;
+    opacity: .7;
 }
 
 .authenticationForm__links__link:hover {

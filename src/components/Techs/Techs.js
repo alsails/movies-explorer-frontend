@@ -13,7 +13,7 @@ function Techs() {
     ]
 
   return (
-    <section className="techs">
+    <section className="techs" id='techs'>
        <div className="techs__container">
             <BlockTitle title='Технологии' />
             <h3 className='techs__container__title'>7 технологий</h3>

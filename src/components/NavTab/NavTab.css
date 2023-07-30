@@ -32,6 +32,11 @@
     width: 100%;
 }
 
+.navTab__link:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
 @media screen and (max-width: 360px) {
     .navTab  {
         width: calc(100% - 17px*2);

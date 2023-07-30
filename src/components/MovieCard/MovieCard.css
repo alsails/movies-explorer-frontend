@@ -60,6 +60,7 @@
 
 .moviesCard__like:hover {
     cursor: pointer;
+    opacity: .8;
 }
 
 .moviesCard__like_active {

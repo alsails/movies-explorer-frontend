@@ -83,7 +83,19 @@
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 600px) {
+    .filterCheckbox__container {
+        padding-left: 19px;
+    }
+
+    .filterCheckbox__text {
+        padding-left: 10px;
+        padding-right: 15px;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .filterCheckbox {
         border: none;
         margin: 0 auto;

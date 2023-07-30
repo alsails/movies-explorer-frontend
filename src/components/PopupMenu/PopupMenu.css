@@ -42,32 +42,42 @@
 }
 
 .popupMenu__link {
+    text-decoration: none;
     color: #000;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
 
+}
+
+.popupMenu__links__link {
+    text-align: center;
     padding: 0 0 28px;
     margin: 0;
 }
 
 .popupMenu__link:hover {
     cursor: pointer;
+    opacity: .7;
 }
 
 .popupMenu__link_active {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+
     width: max-content;
     padding-bottom: 4px;
     position: relative;
 
     border-bottom: 2px solid #000000;
-    margin: 0 auto 22px;
 }
 
 
-.popupMenu__link:last-of-type {
+.popupMenu__links__link:last-child {
     padding: 0;
-    margin-bottom: 0;
 }
 
 .popupMenu__button {
@@ -85,6 +95,12 @@
 
     margin: 0 auto 90px;
 }
+
+.popupMenu__button {
+    cursor: pointer;
+    opacity: .8;
+}
+
 
 @media screen and (max-width: 360px) {
     .popupMenu__container {

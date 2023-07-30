@@ -1,6 +1,7 @@
 import "./Header.css";
 import logoMain from "../../images/icons/logo.svg";
 import { useState } from "react";
+import {Link, NavLink} from "react-router-dom";
 
 function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
     const [isWidth, setisWidth] = useState(window.innerWidth);
@@ -16,30 +17,22 @@ function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
     return (
         <header className="header">
             <div className="header__container">
-                <img className="header__logo" src={logoMain} alt="Логотип" />
+                <Link to='/' className="header__logo">
+                    <img src={logoMain} alt="Логотип" />
+                </Link>
                 {!isLogined && (
                     <nav className="header__authorization">
-                        <a href="#" className="header__authorization__register">
-                            Регистрация
-                        </a>
-                        <button className="header__authorization__login">
-                            Войти
-                        </button>
+                        <Link to='/sign-up' className="header__authorization__register">Регистрация</Link>
+                        <Link to='/sign-in' className="header__authorization__login">Войти</Link>
                     </nav>
                 )}
                 {isLogined && (isWidth > 768) && (
                     <nav className="header__links">
                         <div className="header__links__container">
-                            <a href="#" className="header__links__films">
-                                Фильмы
-                            </a>
-                            <a href="#" className="header__links__likes">
-                                Сохраненные фильмы
-                            </a>
+                            <NavLink to={`/movies`} className={({isActive}) => `${isActive ? 'header__link_active' : 'header__link'}`}>Фильмы</NavLink>
+                            <NavLink to={`/saved-movies`} className={({isActive}) => `${isActive ? 'header__link_active' : 'header__link'}`}>Сохраненные фильмы</NavLink>
                         </div>
-                        <button className="header__links__profile">
-                            Аккаунт
-                        </button>
+                        <Link to='/profile' className="header__links__profile">Аккаунт</Link>
                     </nav>
                 )}
                 {
