@@ -16,7 +16,7 @@ import Profile from "../Profile/Profile";
 
 function App() {
     const [isPopupMenu, setIsPopupMenu] = useState(false);
-    const [isLogined, setIsLogined] = useState(true);
+    const [isLogined, setIsLogined] = useState(false);
     const navigate = useNavigate();
 
     function openPopupMenu() {
@@ -32,12 +32,16 @@ function App() {
         navigate("/", { replace: true })
     }
 
+    function login() {
+        setIsLogined(true)
+    }
+
 
     return (
         <div className="page">
             <Routes>
                 <Route path="/sign-up" element={<Register />} />
-                <Route path="/sign-in" element={<Login />} />
+                <Route path="/sign-in" element={<Login login={login} />} />
                 <Route
                     path="/"
                     element={

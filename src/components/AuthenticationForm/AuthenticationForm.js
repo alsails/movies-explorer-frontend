@@ -1,5 +1,5 @@
 import "./AuthenticationForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../images/icons/logo.svg";
 
 function AuthenticationForm({
@@ -9,7 +9,18 @@ function AuthenticationForm({
     values,
     handleChange,
     name,
+    login
 }) {
+    const navigate = useNavigate();
+
+    function authorization() {
+        const formElement = document.querySelector(".form");
+        const formName = formElement.getAttribute("name");
+        if (formName === "login") {
+            login();
+            navigate("/movies", { replace: true })
+        }
+    }
     return (
         <section className="authenticationForm">
             <div className="authenticationForm__container">
@@ -62,9 +73,13 @@ function AuthenticationForm({
                         required
                     />
                     <span id="input-error" className="form__error">
-                        При авторизации произошла ошибка. Токен не передан или передан не в том формате.
+                        При авторизации произошла ошибка. Токен не передан или
+                        передан не в том формате.
                     </span>
-                    <button className="authenticationForm__button">
+                    <button
+                        onClick={authorization}
+                        className="authenticationForm__button"
+                    >
                         {buttonText}
                     </button>
                 </form>

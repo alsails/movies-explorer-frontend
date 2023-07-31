@@ -2,7 +2,7 @@ import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useForm } from "../../hooks/useForm";
 import "../AuthenticationForm/AuthenticationForm.css";
 
-function Login() {
+function Login({login}) {
     const { values, handleChange } = useForm({});
 
     const handleSubmit = (e) => {
@@ -21,6 +21,7 @@ function Login() {
                 handleChange={handleChange}
                 onSubmit={handleSubmit} 
                 values={values}
+                login={login}
             />
         </section>
     );
