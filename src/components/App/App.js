@@ -10,12 +10,14 @@ import Register from "../Register/Register";
 import "./App.css";
 import PopupMenu from "../PopupMenu/PopupMenu";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 
 function App() {
     const [isPopupMenu, setIsPopupMenu] = useState(false);
-    const isLogined = false;
+    const [isLogined, setIsLogined] = useState(true);
+    const navigate = useNavigate();
 
     function openPopupMenu() {
         setIsPopupMenu(true);
@@ -24,6 +26,12 @@ function App() {
     function closeAllPopup() {
         setIsPopupMenu(false);
     }
+
+    function signOut() {
+        setIsLogined(false)
+        navigate("/", { replace: true })
+    }
+
 
     return (
         <div className="page">
@@ -85,7 +93,7 @@ function App() {
                                 closeAllPopup={closeAllPopup}
                                 isOpened={isPopupMenu}
                             />
-                            <Profile />
+                            <Profile signOut={signOut}/>
                             <Footer />
                         </>
                     }

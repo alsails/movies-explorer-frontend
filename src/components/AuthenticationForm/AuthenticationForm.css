@@ -1,7 +1,6 @@
 .authenticationForm {
     max-width: 396px;
     margin: 70px auto 0;
-    height: calc(100vh - 50px);
 
     position: relative;
 }
@@ -26,9 +25,7 @@
     height: 380px;
 }
 
-.form {
-    height: 266px;
-}
+
 
 .form__lable {
     color: #A0A0A0;
@@ -61,6 +58,10 @@
 
 .form__input:last-of-type {
     margin-bottom: 0;
+}
+
+.form__input:focus {
+    outline: 1px solid #A0A0A0;
 }
 
 .form__error {
@@ -128,15 +129,13 @@
 
     margin: 0;
     padding: 0;
+
+    text-decoration: none;
 }
 
 .authenticationForm__links__link:hover {
     cursor: pointer;
     opacity: .7;
-}
-
-.authenticationForm__links__link:hover {
-    cursor: pointer;
 }
 
 @media screen and (max-width: 450px) {

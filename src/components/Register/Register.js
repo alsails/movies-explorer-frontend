@@ -1,24 +1,31 @@
 import AuthenticationForm from '../AuthenticationForm/AuthenticationForm';
+import { useForm } from "../../hooks/useForm";
 import '../AuthenticationForm/AuthenticationForm.css';
 
-function Login() {
+function Register() {
+    let error;
+    const spanError = document.querySelector('form__error')
+    const { values, handleChange } = useForm({});
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!values.email || !values.password || !values.name) {
+            return;
+        }
+    }
+
   return (
     <section className="register">
         <AuthenticationForm 
             title = 'Добро пожаловать!' 
             buttonText = 'Зарегистрироваться'
             name = 'register'
-        >
-            <p className='form__lable'>Имя</p>
-            <input type="text" id="name-input" className="form__input" name="name" required/>
-            <p className='form__lable'>Email</p>
-            <input type="email" id="email-input" className="form__input" name="email" required/>
-            <p className='form__lable' >Пароль</p>
-            <input id="password-input" type="password" className="form__input" name="password" required />
-            <span id="input-error" className="form__error form__error_visible">Что-то пошло не так... </span>
-        </AuthenticationForm>
+            handleChange={handleChange}
+            onSubmit={handleSubmit} 
+            values={values}
+        />
     </section>
   );
 }
 
-export default Login;
+export default Register;

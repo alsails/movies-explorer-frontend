@@ -1,32 +1,103 @@
-import './AuthenticationForm.css';
-import Logo from '../../images/icons/logo.svg'
+import "./AuthenticationForm.css";
+import { Link } from "react-router-dom";
+import Logo from "../../images/icons/logo.svg";
 
-function AuthenticationForm({title, buttonText, name, children}) {
-  return (
-    <section className="authenticationForm">
-        <div className='authenticationForm__container'>
-            <img className='authenticationForm__img' src={Logo} alt='Логотип'/>
-            <h2 className='authenticationForm__title'>{title}</h2>
-            <form action="submit" className="form" name={name}>
-                {children}
-            </form>
-            <button className='authenticationForm__button'>{buttonText}</button>
-            <div className='authenticationForm__links'> 
-                {
-                    name === 'login' 
-                    ? <> 
-                        <p className='authenticationForm__links__text'>Ещё не зарегистрированы?</p>
-                        <p className='authenticationForm__links__link'>Регистрация</p>
-                    </>
-                    : <> 
-                        <p className='authenticationForm__links__text'>Уже зарегистрированы?</p>
-                        <p className='authenticationForm__links__link'>Войти</p>
-                    </>
-                }
+function AuthenticationForm({
+    title,
+    buttonText,
+    onSubmit,
+    values,
+    handleChange,
+    name,
+}) {
+    return (
+        <section className="authenticationForm">
+            <div className="authenticationForm__container">
+                <Link to="/">
+                    <img
+                        className="authenticationForm__img"
+                        src={Logo}
+                        alt="Логотип"
+                    />
+                </Link>
+                <h2 className="authenticationForm__title">{title}</h2>
+                <form
+                    action="submit"
+                    className="form"
+                    name={name}
+                    onSubmit={onSubmit}
+                >
+                    {name === "register" && (
+                        <>
+                            <p className="form__lable">Имя</p>
+                            <input
+                                type="text"
+                                id="name-input"
+                                className="form__input"
+                                name="name"
+                                value={values.name || ""}
+                                onChange={handleChange}
+                                required
+                            />
+                        </>
+                    )}
+                    <p className="form__lable">Email</p>
+                    <input
+                        type="email"
+                        id="email-input"
+                        className="form__input"
+                        name="email"
+                        value={values.email || ""}
+                        onChange={handleChange}
+                        required
+                    />
+                    <p className="form__lable">Пароль</p>
+                    <input
+                        id="password-input"
+                        type="password"
+                        className="form__input"
+                        name="password"
+                        value={values.password || ""}
+                        onChange={handleChange}
+                        required
+                    />
+                    <span id="input-error" className="form__error">
+                        При авторизации произошла ошибка. Токен не передан или передан не в том формате.
+                    </span>
+                    <button className="authenticationForm__button">
+                        {buttonText}
+                    </button>
+                </form>
+                <div className="authenticationForm__links">
+                    {name === "login" ? (
+                        <>
+                            <p className="authenticationForm__links__text">
+                                Ещё не зарегистрированы?
+                            </p>
+                            <Link
+                                to="/sign-up"
+                                className="authenticationForm__links__link"
+                            >
+                                Регистрация
+                            </Link>
+                        </>
+                    ) : (
+                        <>
+                            <p className="authenticationForm__links__text">
+                                Уже зарегистрированы?
+                            </p>
+                            <Link
+                                to="/sign-in"
+                                className="authenticationForm__links__link"
+                            >
+                                Войти
+                            </Link>
+                        </>
+                    )}
+                </div>
             </div>
-        </div>
-    </section>
-  );
+        </section>
+    );
 }
 
 export default AuthenticationForm;
