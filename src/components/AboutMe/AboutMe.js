@@ -33,9 +33,9 @@ function AboutMe() {
         </div>
         <p className='aboutMe__portfolio'>Портфолио</p>
         {
-          links.map((link) => {
+          links.map((link, index) => {
             return (
-              <div className='aboutMe__portfolio__link'>
+              <div className='aboutMe__portfolio__link' key={index}>
                 <a href={link.href} target='_blank' className='aboutMe__portfolio__link__name' >{link.name}</a>
                 <img src={arrow} alt='Стрелка' className='aboutMe__portfolio__link__arrow' />
               </div>

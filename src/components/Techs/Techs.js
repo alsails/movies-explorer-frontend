@@ -20,9 +20,9 @@ function Techs() {
             <p className='techs__container__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
             <ul className='techs__container__technologies'>
                 {
-                technologies.map((technology) => {
+                technologies.map((technology, index) => {
                     return (
-                        <li className='techs__container__technology'>
+                        <li className='techs__container__technology' key={index}>
                             <p className='techs__container__technology__text'>{technology}</p>
                         </li>
                     )

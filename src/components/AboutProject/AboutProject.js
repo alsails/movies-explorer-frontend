@@ -32,7 +32,6 @@ function AboutProject() {
         <div className='aboutProject__time'>
         {
           timiesInfo.map((timeInfo, index) => {
-            console.log(index === 3)
             return (
               <p className={`aboutProject__time__text`} key={index}>{timeInfo}</p>
             )
