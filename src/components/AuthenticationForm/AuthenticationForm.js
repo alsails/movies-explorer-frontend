@@ -14,9 +14,7 @@ function AuthenticationForm({
     const navigate = useNavigate();
 
     function authorization() {
-        const formElement = document.querySelector(".form");
-        const formName = formElement.getAttribute("name");
-        if (formName === "login") {
+        if (name === "login") {
             login();
             navigate("/movies", { replace: true })
         }
@@ -78,7 +76,7 @@ function AuthenticationForm({
                     </span>
                     <button
                         onClick={authorization}
-                        className="authenticationForm__button"
+                        className={`authenticationForm__button ${name === 'register' ? 'authenticationForm__button_register' : ''}`}
                     >
                         {buttonText}
                     </button>

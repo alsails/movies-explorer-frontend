@@ -29,5 +29,6 @@
 @media screen and (max-width: 360px) {
     .more {
         max-width: 240px;
+        padding-top: 43px;
     }
 }

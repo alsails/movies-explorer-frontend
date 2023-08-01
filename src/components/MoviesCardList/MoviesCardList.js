@@ -4,7 +4,8 @@ import MovieCard from "../MovieCard/MovieCard";
 import { useEffect, useState } from "react";
 import More from "../More/More";
 
-function MoviesCardList() {
+function MoviesCardList({isSaved}) {
+    console.log(isSaved)
     return (
         <>
             <section className="moviesCardList">
@@ -12,7 +13,7 @@ function MoviesCardList() {
                     return <MovieCard movie={movie} />;
                 })}
             </section>
-            <More />
+            {!isSaved && <More />}
         </>
     );
 }

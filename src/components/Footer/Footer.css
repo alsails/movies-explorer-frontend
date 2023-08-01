@@ -82,13 +82,15 @@
         flex-direction: column;
         align-items: center;
         row-gap: 30px;
+
+        padding-top: 33px;
     }
 
     .footer__info__links {
         flex-direction: column;
         order: -1;
         text-align: center;
-        row-gap: 11px;
+        row-gap: 13px;
     }
 
     .footer__info__link {

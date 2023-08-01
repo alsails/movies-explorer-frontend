@@ -77,7 +77,7 @@
     font-weight: 400;
     line-height: 20px;
 
-    padding: 100px 0 50px;
+    padding: 100px 0 30px;
     margin: 0;
 }
 
@@ -88,7 +88,7 @@
 
     border-bottom: 1px solid #E6E6E6;
 
-    padding-bottom: 19px;
+    padding: 20px 0 19px;
 }
 
 .aboutMe__portfolio__link:last-of-type {
@@ -106,13 +106,9 @@
     letter-spacing: -1.2px;
 
     margin: 0;
-    padding: 20px 0 0;
+
 
     text-decoration: none;
-}
-
-.aboutMe__portfolio__link__name:first {
-    padding: 0;
 }
 
 .aboutMe__portfolio__link__name:hover {
@@ -125,7 +121,7 @@
     width: 15px;
     height: 100%;
 
-    padding: 40px 7px 0;
+    padding: 18px 7px 0;
 }
 
 .aboutMe__portfolio__link__arrow:hover {
@@ -198,7 +194,7 @@
     .aboutMe__profile__container {
         flex-direction: column;
 
-        margin-top: 60px;
+        margin-top: 65px;
     }
 
     .aboutMe__profile__container__avatar {
@@ -230,10 +226,14 @@
     }
 
     .aboutMe__portfolio {
-        padding: 70px 0 40px;
+        padding: 70px 0 17px;
 
         font-size: 14px;
         line-height: 20px;
+    }
+
+    .aboutMe__portfolio__link {
+        padding-top: 0;
     }
 
     .aboutMe__portfolio__link__name {

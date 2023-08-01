@@ -22,7 +22,7 @@
 }
 
 .header__authorization {
-    margin-top: 3px;
+    margin-top: 8px;
 }
 
 .header__authorization__register {
@@ -208,7 +208,7 @@
         font-size: 10px;
         line-height: 16px;
 
-        padding: 5px 12px;
+        padding: 7px 12px;
     }
 
     .header__hamburger-menu {

@@ -98,7 +98,6 @@ function App() {
                                 isOpened={isPopupMenu}
                             />
                             <Profile signOut={signOut}/>
-                            <Footer />
                         </>
                     }
                 />

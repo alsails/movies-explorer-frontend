@@ -6,7 +6,8 @@
 
 .aboutProject__info {
     display: grid;
-    grid-template-columns: repeat(2, calc(100% / 2));
+    grid-template-columns: repeat(2, 550px);
+    column-gap: 40px;
     row-gap: 26px;
 
     margin-top: 70px;
@@ -19,12 +20,13 @@
     color: #000;
     font-size: 14px;
     font-weight: 400;
-    line-height: normal;
+    line-height: 20px;
 }
 
 .aboutProject__info__text:nth-child(-n+2) {
     font-size: 20px;
     letter-spacing: -0.8px;
+    line-height: normal;
 }
 
 .aboutProject__time {
@@ -52,6 +54,7 @@
     font-weight: 400;
     font-size: 14px;
     font-family: Inter;
+    line-height: normal;
 }
 
 .aboutProject__time .aboutProject__time__text:first-of-type {
@@ -111,18 +114,22 @@
 
     .aboutProject__info__text:nth-child(-n+2) {
         font-size: 18px;
+        line-height: 23px;
         letter-spacing: -0.72px;
     }
 
     .aboutProject__info__text{
         font-size: 11px;
         line-height: 16px;
+        width: 284px;
     }
 
     .aboutProject__time {
-        margin-top: 60px;
+        margin-top: 57px;
+        row-gap: 8px;
 
-        row-gap: 10px;
+        grid-template-columns: calc(100% / 71 * 25)  calc(100% / 71 * 46);
+
     }
 
     .aboutProject__time__text:nth-child(-n+2) {

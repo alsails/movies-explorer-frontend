@@ -23,6 +23,10 @@
     .promo {
         width: calc(100% - 20px*2);
     }
+
+    .promo__title {
+        padding: 350px 0 314px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -44,6 +48,6 @@
         font-size: 29px;
         line-height: 37px;
 
-        padding: 220px 0 217px;
+        padding: 220px 0 211px;
     }
 }

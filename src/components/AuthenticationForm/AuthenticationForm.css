@@ -25,8 +25,6 @@
     height: 380px;
 }
 
-
-
 .form__lable {
     color: #A0A0A0;
     font-size: 10px;
@@ -72,11 +70,11 @@
     margin: 0;
     padding: 10px 0 0;
 
-    visibility: hidden;
+    opacity: 0;;
 }
 
 .form__error_visible {
-    visibility: visible;
+    opacity: 1;
 }
 
 .authenticationForm__button {
@@ -90,10 +88,14 @@
     font-size: 14px;
     font-weight: 500;
 
-    margin: 69px auto 16px;
+    margin: 142px auto 16px;
     padding: 13px 0 15px;
 
     border: none;
+}
+
+.authenticationForm__button_register {
+    margin-top: 55px;
 }
 
 .authenticationForm__button:hover {
@@ -138,6 +140,12 @@
     opacity: .7;
 }
 
+@media screen and (max-width: 768px) {
+    .authenticationForm {
+        margin-top: 232px;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .authenticationForm {
         max-width: calc(100% - 30px * 2);
@@ -163,14 +171,11 @@
     }
 
     .authenticationForm__button {
-        position: absolute;
+        margin: 267px auto 14px;
 
-        bottom: 59px;
-        margin: 0;
     }
 
-    .authenticationForm__links {
-        position: absolute;
-        bottom: 30px;
+    .authenticationForm__button_register {
+        margin-top: 157px;
     }
 }
