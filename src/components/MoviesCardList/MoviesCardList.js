@@ -6,11 +6,11 @@ import More from "../More/More";
 function MoviesCardList({isSaved}) {
     return (
         <>
-            <section className="moviesCardList">
+            <ul className="moviesCardList">
                 {movies.slice(0, 12).map((movie, index) => {
-                    return <MovieCard movie={movie} key={index}/>;
+                    return <li><MovieCard movie={movie} key={index}/></li>;
                 })}
-            </section>
+            </ul>
             {!isSaved && <More />}
         </>
     );

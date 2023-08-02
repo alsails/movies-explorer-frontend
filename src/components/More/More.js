@@ -3,7 +3,7 @@ import './More.css';
 function More() {
   return (
     <section className="more">
-        <button className="more__button">Ещё</button>
+        <button type='button' className="more__button">Ещё</button>
     </section>
   );
 }

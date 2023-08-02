@@ -15,16 +15,20 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 
 function App() {
+    const bodyElement = document.querySelector('body');
     const [isPopupMenu, setIsPopupMenu] = useState(false);
     const [isLogined, setIsLogined] = useState(false);
     const navigate = useNavigate();
 
     function openPopupMenu() {
         setIsPopupMenu(true);
+        bodyElement.style.overflow = 'hidden';
+        
     }
 
     function closeAllPopup() {
         setIsPopupMenu(false);
+        bodyElement.style.overflow = 'auto';
     }
 
     function signOut() {
@@ -40,8 +44,8 @@ function App() {
     return (
         <div className="page">
             <Routes>
-                <Route path="/sign-up" element={<Register />} />
-                <Route path="/sign-in" element={<Login login={login} />} />
+                <Route path="/signup" element={<Register />} />
+                <Route path="/signin" element={<Login login={login} />} />
                 <Route
                     path="/"
                     element={

@@ -1,8 +1,6 @@
 .authenticationForm {
     max-width: 396px;
     margin: 70px auto 0;
-
-    position: relative;
 }
 
 .authenticationForm__container {
@@ -154,7 +152,6 @@
 
     .authenticationForm__container {
         margin-top: 50px;
-        height: 694px;
 
         display: flex;
         flex-direction: column;

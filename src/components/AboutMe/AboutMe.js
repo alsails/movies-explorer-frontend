@@ -23,22 +23,22 @@ function AboutMe() {
       <div className='aboutMe__container'>
         <BlockTitle title='Студент' />
         <div className='aboutMe__profile__container'>
-          <div className='aboutMe__profile__container__info'>
-            <p className='aboutMe__profile__container__info__name'>Мария</p>
-            <p className='aboutMe__profile__container__info__profession'>Фронтенд-разработчик, 19 лет</p>
-            <p className='aboutMe__profile__container__info__description'>Я родилась и живу в Москве, закончила Московский приборостроительный техникум при РЭУ по специальности "специалист по информационным системам". Во время учебы познакомилась с фронетнд-разработкой и заинтересовалась. После того, как прошла курс по веб-разработке, начала заниматься фриланс-заказами. </p>
-            <a href='https://github.com/alsails' className='aboutMe__profile__container__info__github'>Github</a>
-          </div>
+          <ul className='aboutMe__profile__container__info'>
+            <li className='aboutMe__profile__container__info__name'>Мария</li>
+            <li className='aboutMe__profile__container__info__profession'>Фронтенд-разработчик, 19 лет</li>
+            <li className='aboutMe__profile__container__info__description'>Я родилась и живу в Москве, закончила Московский приборостроительный техникум при РЭУ по специальности "специалист по информационным системам". Во время учебы познакомилась с фронетнд-разработкой и заинтересовалась. После того, как прошла курс по веб-разработке, начала заниматься фриланс-заказами. </li>
+            <li href='https://github.com/alsails' target='_blank' className='aboutMe__profile__container__info__github'>Github</li>
+          </ul>
           <img src={Avatar} alt="Аватар" className='aboutMe__profile__container__avatar'/>
         </div>
-        <p className='aboutMe__portfolio'>Портфолио</p>
+        <h2 className='aboutMe__portfolio'>Портфолио</h2>
         {
           links.map((link, index) => {
             return (
-              <div className='aboutMe__portfolio__link' key={index}>
-                <a href={link.href} target='_blank' className='aboutMe__portfolio__link__name' >{link.name}</a>
+              <a href={link.href} target='_blank' className='aboutMe__portfolio__link' key={index}>
+                <p className='aboutMe__portfolio__link__name' >{link.name}</p>
                 <img src={arrow} alt='Стрелка' className='aboutMe__portfolio__link__arrow' />
-              </div>
+              </a>
             )
           })
         }

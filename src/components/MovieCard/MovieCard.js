@@ -5,8 +5,8 @@ function MovieCard({movie}) {
   return (
     <div className="moviesCard">
         <div className='moviesCard__container'>
-          <p className='moviesCard__title'>{movie.name}</p>
-          <button className={`moviesCard__like ${isLike ? 'moviesCard__like_active' : ''}`} />
+          <h2 className='moviesCard__title'>{movie.name}</h2>
+          <button type='button' className={`moviesCard__like ${isLike ? 'moviesCard__like_active' : ''}`} />
           <p className='moviesCard__duration'>{movie.time}</p>
         </div>
         <img className='moviesCard__img' src={movie.img} alt={`Обложка фильма ${movie.name}`}/>

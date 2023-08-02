@@ -22,8 +22,8 @@ function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
                 </Link>
                 {!isLogined && (
                     <nav className="header__authorization">
-                        <Link to='/sign-up' className="header__authorization__register">Регистрация</Link>
-                        <Link to='/sign-in' className="header__authorization__login">Войти</Link>
+                        <Link to='/signup' className="header__authorization__register">Регистрация</Link>
+                        <Link to='/signin' className="header__authorization__login">Войти</Link>
                     </nav>
                 )}
                 {isLogined && (isWidth > 768) && (

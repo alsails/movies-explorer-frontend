@@ -59,8 +59,10 @@
     cursor: pointer;
 }
 
-.form__profile__input_active:focus {
-    border: 1px solid #e8e8e8;
+.form__profile__input:focus {
+    outline: 0.2px solid #e8e8e8;
+    border-radius: 2px;
+
 }
 
 .profile__edit {

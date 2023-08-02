@@ -9,18 +9,18 @@ function AuthenticationForm({
     values,
     handleChange,
     name,
-    login
+    login,
 }) {
     const navigate = useNavigate();
 
     function authorization() {
         if (name === "login") {
             login();
-            navigate("/movies", { replace: true })
+            navigate("/movies", { replace: true });
         }
     }
     return (
-        <section className="authenticationForm">
+        <div className="authenticationForm">
             <div className="authenticationForm__container">
                 <Link to="/">
                     <img
@@ -29,7 +29,7 @@ function AuthenticationForm({
                         alt="Логотип"
                     />
                 </Link>
-                <h2 className="authenticationForm__title">{title}</h2>
+                <h1 className="authenticationForm__title">{title}</h1>
                 <form
                     action="submit"
                     className="form"
@@ -38,7 +38,7 @@ function AuthenticationForm({
                 >
                     {name === "register" && (
                         <>
-                            <p className="form__lable">Имя</p>
+                            <lable className="form__lable">Имя</lable>
                             <input
                                 type="text"
                                 id="name-input"
@@ -46,11 +46,14 @@ function AuthenticationForm({
                                 name="name"
                                 value={values.name || ""}
                                 onChange={handleChange}
+                                placeholder="Имя"
+                                minLength="2"
+                                maxLength="30"
                                 required
                             />
                         </>
                     )}
-                    <p className="form__lable">Email</p>
+                    <lable className="form__lable">E-mail</lable>
                     <input
                         type="email"
                         id="email-input"
@@ -58,9 +61,10 @@ function AuthenticationForm({
                         name="email"
                         value={values.email || ""}
                         onChange={handleChange}
+                        placeholder="E-mail"
                         required
                     />
-                    <p className="form__lable">Пароль</p>
+                    <lable className="form__lable">Пароль</lable>
                     <input
                         id="password-input"
                         type="password"
@@ -68,6 +72,8 @@ function AuthenticationForm({
                         name="password"
                         value={values.password || ""}
                         onChange={handleChange}
+                        placeholder="Пароль"
+                        minLength="5"
                         required
                     />
                     <span id="input-error" className="form__error">
@@ -76,7 +82,12 @@ function AuthenticationForm({
                     </span>
                     <button
                         onClick={authorization}
-                        className={`authenticationForm__button ${name === 'register' ? 'authenticationForm__button_register' : ''}`}
+                        className={`authenticationForm__button ${
+                            name === "register"
+                                ? "authenticationForm__button_register"
+                                : ""
+                        }`}
+                        type="submit"
                     >
                         {buttonText}
                     </button>
@@ -88,7 +99,7 @@ function AuthenticationForm({
                                 Ещё не зарегистрированы?
                             </p>
                             <Link
-                                to="/sign-up"
+                                to="/signup"
                                 className="authenticationForm__links__link"
                             >
                                 Регистрация
@@ -100,7 +111,7 @@ function AuthenticationForm({
                                 Уже зарегистрированы?
                             </p>
                             <Link
-                                to="/sign-in"
+                                to="/signin"
                                 className="authenticationForm__links__link"
                             >
                                 Войти
@@ -109,7 +120,7 @@ function AuthenticationForm({
                     )}
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 

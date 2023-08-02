@@ -98,7 +98,9 @@
 @media screen and (max-width: 500px) {
     .filterCheckbox {
         border: none;
+        width: 148px;
         margin: 0 auto;
+        padding: 45px 0 0 0;
     }
 
     .filterCheckbox__container {

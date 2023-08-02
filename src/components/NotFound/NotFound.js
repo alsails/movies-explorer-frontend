@@ -1,15 +1,17 @@
-import './NotFound.css';
+import "./NotFound.css";
 
 function NotFound() {
-  return (
-    <div className="notFound">
-        <div className='notFound__container'>
-            <h2 className='notFound__title'>404</h2>
-            <p className='notFound__description'>Страница не найдена</p>
-            <button className='notFound__return'>Назад</button>
-        </div>
-    </div>
-  );
+    return (
+        <main>
+            <div className="notFound">
+                <div className="notFound__container">
+                    <h1 className="notFound__title">404</h1>
+                    <p className="notFound__description">Страница не найдена</p>
+                    <button type="button" className="notFound__return">Назад</button>
+                </div>
+            </div>
+        </main>
+    );
 }
 
 export default NotFound;

@@ -5,10 +5,10 @@ import SearchForm from "../SearchForm/SearchForm";
 function Movies() {
     const isSaved = false;
     return (
-        <>
+        <main>
             <SearchForm />
             <MoviesCardList isSaved={isSaved} />
-        </>
+        </main>
     );
 }
 

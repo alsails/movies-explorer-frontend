@@ -12,7 +12,7 @@ function FilterCheckbox() {
     }
 
   return (
-    <section className='filterCheckbox'>
+    <div className='filterCheckbox'>
         <div className='filterCheckbox__container' >
             <label>
                 <input type="checkbox" name="checkboxName" className="checkbox"/>
@@ -20,7 +20,7 @@ function FilterCheckbox() {
             </label>
             <p className='filterCheckbox__text'>Короткометражки</p>
         </div>
-    </section>
+    </div>
   );
 }
 
