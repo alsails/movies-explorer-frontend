@@ -24,7 +24,7 @@ function AboutProject() {
           {
             texts.map((text, index) => {
               return (
-                <p className={`aboutProject__info__text ${index === 2 ? 'aboutProject__info__text__third' : ''}`} key={index}>{text}</p>
+                <p className={`aboutProject__info-text ${index === 2 ? 'aboutProject__info-text_third' : ''}`} key={index}>{text}</p>
               )
             })
           }
@@ -33,7 +33,7 @@ function AboutProject() {
         {
           timiesInfo.map((timeInfo, index) => {
             return (
-              <p className={`aboutProject__time__text`} key={index}>{timeInfo}</p>
+              <p className={`aboutProject__time-text`} key={index}>{timeInfo}</p>
             )
           })
         }

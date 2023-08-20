@@ -16,14 +16,14 @@ function Techs() {
     <section className="techs" id='techs'>
        <div className="techs__container">
             <BlockTitle title='Технологии' />
-            <h3 className='techs__container__title'>7 технологий</h3>
-            <p className='techs__container__text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-            <ul className='techs__container__technologies'>
+            <h3 className='techs__container-title'>7 технологий</h3>
+            <p className='techs__container-text'>На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
+            <ul className='techs__technologies'>
                 {
                 technologies.map((technology, index) => {
                     return (
-                        <li className='techs__container__technology' key={index}>
-                            <p className='techs__container__technology__text'>{technology}</p>
+                        <li className='techs__technology' key={index}>
+                            <p className='techs__technology-text'>{technology}</p>
                         </li>
                     )
                 })

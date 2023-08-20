@@ -23,7 +23,7 @@
     height: 380px;
 }
 
-.form__lable {
+.authenticationForm__form-lable {
     color: #A0A0A0;
     font-size: 10px;
     font-weight: 400;
@@ -32,7 +32,7 @@
     margin: 0;
 }
 
-.form__input {
+.authenticationForm__form-input {
     border-radius: 8px;
     background: #F9F9F9;
 
@@ -52,15 +52,15 @@
 
 }
 
-.form__input:last-of-type {
+.authenticationForm__form-input:last-of-type {
     margin-bottom: 0;
 }
 
-.form__input:focus {
+.authenticationForm__form-input:focus {
     outline: 1px solid #A0A0A0;
 }
 
-.form__error {
+.authenticationForm__form-error {
     color: #FF3055;
     font-size: 10px;
     font-weight: 400;
@@ -71,11 +71,11 @@
     opacity: 0;;
 }
 
-.form__error_visible {
+.authenticationForm__form-error_visible {
     opacity: 1;
 }
 
-.authenticationForm__button {
+.authenticationForm__form-button {
     width: 100%;
 
     border-radius: 3px;
@@ -92,11 +92,11 @@
     border: none;
 }
 
-.authenticationForm__button_register {
+.authenticationForm__form-button_regster {
     margin-top: 55px;
 }
 
-.authenticationForm__button:hover {
+.authenticationForm__form-button:hover {
     cursor: pointer;
     opacity: .8;
 }
@@ -111,7 +111,7 @@
     column-gap: 6px;
 }
 
-.authenticationForm__links__text {
+.authenticationForm__links-text {
     color: #A0A0A0;
     text-align: center;
     font-size: 14px;
@@ -121,7 +121,7 @@
     padding: 0;
 }
 
-.authenticationForm__links__link {
+.authenticationForm__links-link {
     color: #3456F3;
     text-align: center;
     font-size: 14px;
@@ -133,7 +133,7 @@
     text-decoration: none;
 }
 
-.authenticationForm__links__link:hover {
+.authenticationForm__links-link:hover {
     cursor: pointer;
     opacity: .7;
 }
@@ -141,6 +141,18 @@
 @media screen and (max-width: 768px) {
     .authenticationForm {
         margin-top: 232px;
+    }
+
+    .authenticationForm__title {
+        margin: 38px 0 35px;
+    }
+
+    .form__input {
+        margin-bottom: 15px;
+    }
+
+    .authenticationForm__button {
+        margin: 139px 0 17px;
     }
 }
 
@@ -151,7 +163,7 @@
     }
 
     .authenticationForm__container {
-        margin-top: 50px;
+        margin-top: 56px;
 
         display: flex;
         flex-direction: column;
@@ -164,15 +176,29 @@
     }
 
     .authenticationForm__title {
-        margin: 50px auto 80px;
+        margin: 48px auto 75px;
     }
 
     .authenticationForm__button {
-        margin: 267px auto 14px;
+        margin: 230px auto 14px;
+        font-size: 12px;
+        padding: 15px 0 17px;
 
     }
 
     .authenticationForm__button_register {
-        margin-top: 157px;
+        margin-top: 141px;
+    }
+
+    .authenticationForm__links-text {
+        font-size: 12px;
+    }
+
+    .authenticationForm__links-link {
+        font-size: 12px;
+    }
+
+    .form__input:nth-child(2) {
+        margin-bottom: 12px;
     }
 }

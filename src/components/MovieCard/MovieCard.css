@@ -87,8 +87,12 @@
     grid-area: c;
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 570px) {
     .moviesCard {
-        max-height: 258px;
+        height: 236px;
     }
-} */
+
+    .moviesCard__img {
+        height: 168px;
+    }
+}

@@ -12,6 +12,10 @@
     padding: 0;
 }
 
+.moviesCardList_saved {
+    margin-bottom: 170px;
+}
+
 @media screen and (max-width: 1158px) {
     .moviesCardList {
         max-width: calc(100% - 30px * 2);
@@ -34,9 +38,10 @@
 @media screen and (max-width: 570px) {
     .moviesCardList {
         grid-template-columns: 1fr;
-        margin-top: 40px;
+        margin-top: 49px;
 
         max-width: calc(100% - 10px * 2);
         row-gap: 16px;
     }
+
 }

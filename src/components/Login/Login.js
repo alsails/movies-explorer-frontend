@@ -1,6 +1,5 @@
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useForm } from "../../hooks/useForm";
-import "../AuthenticationForm/AuthenticationForm.css";
 
 function Login({ login }) {
     const { values, handleChange } = useForm({});

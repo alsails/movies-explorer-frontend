@@ -43,6 +43,10 @@
         padding-bottom: 17px;
     }
 
+    .navTab__links {
+        column-gap: 6px;
+    }
+
     .navTab__link {
         font-size: 10px;
         line-height: 16px;

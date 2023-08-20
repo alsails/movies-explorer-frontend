@@ -38,6 +38,11 @@
     border-radius: 20px; 
 }
 
+.switch:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
 .switch:before {
     content: ' ';
     position: absolute;

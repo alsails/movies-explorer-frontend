@@ -13,7 +13,7 @@
     margin-top: 70px;
 }
 
-.aboutProject__info__text {
+.aboutProject__info-text {
     margin: 0;
     padding: 0;
 
@@ -23,7 +23,7 @@
     line-height: 20px;
 }
 
-.aboutProject__info__text:nth-child(-n+2) {
+.aboutProject__info-text:nth-child(-n+2) {
     font-size: 20px;
     letter-spacing: -0.8px;
     line-height: normal;
@@ -37,7 +37,7 @@
     margin-top: 110px;
 }
 
-.aboutProject__time__text {
+.aboutProject__time-text {
     color: #A0A0A0;
     text-align: center;
     font-size: 14px;
@@ -48,7 +48,7 @@
     margin: 0;
 }
 
-.aboutProject__time__text:nth-child(-n+2) {
+.aboutProject__time-text:nth-child(-n+2) {
     padding: 9px 0;
     color: #000;
     font-weight: 400;
@@ -56,11 +56,11 @@
     line-height: normal;
 }
 
-.aboutProject__time .aboutProject__time__text:first-of-type {
+.aboutProject__time .aboutProject__time-text:first-of-type {
     background-color: #2BE080;
 }
 
-.aboutProject__time .aboutProject__time__text:nth-child(2) {
+.aboutProject__time .aboutProject__time-text:nth-child(2) {
     background-color: #F2F2F2;
 }
 
@@ -88,7 +88,17 @@
 }
 
 @media screen and (max-width: 768px) {
-    .aboutProject__info__text {
+
+    .aboutProject__info {
+        margin-top: 72px;
+        row-gap: 23px;
+    }
+
+    .aboutProject__time {
+        grid-template-columns: calc(100% / 167 * 35) calc(100% / 167 * 132);
+    }
+
+    .aboutProject__info-text {
         font-size: 12px;
         line-height: 18px;
     }
@@ -98,7 +108,7 @@
     }
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 500px) {
     .aboutProject__container {
         width: calc(100% - 18px*2);
         padding-bottom: 70px;
@@ -107,41 +117,48 @@
     .aboutProject__info {
         margin-top: 60px;
 
-        grid-template-columns: calc(100% - 10px * 2);
+        grid-template-columns: 100%;
         row-gap: 16px;
     }
 
-    .aboutProject__info__text__third {
+    .aboutProject__info-text__third {
         grid-row: 2;
         margin-bottom: 40px;
     }
 
-    .aboutProject__info__text:nth-child(-n+2) {
+    .aboutProject__info-text:nth-child(-n+2) {
         font-size: 18px;
-        line-height: 23px;
+        line-height: 22px;
         letter-spacing: -0.72px;
+        width: 100%;
     }
 
-    .aboutProject__info__text{
+    .aboutProject__info-text{
         font-size: 11px;
         line-height: 16px;
-        max-width: 284px;
+        max-width: 440px;
     }
 
     .aboutProject__time {
-        margin-top: 57px;
+        margin-top: 58px;
         row-gap: 8px;
 
         grid-template-columns: calc(100% / 71 * 25)  calc(100% / 71 * 46);
 
     }
 
-    .aboutProject__time__text:nth-child(-n+2) {
+    .aboutProject__time-text:nth-child(-n+2) {
         font-size: 11px;
         padding: 11px 0;
     }
 
-    .aboutProject__time__text {
+    .aboutProject__time-text {
         font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .aboutProject__info-text{
+        max-width: 284px;
     }
 }

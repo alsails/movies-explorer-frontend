@@ -22,17 +22,17 @@ function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
                 </Link>
                 {!isLogined && (
                     <nav className="header__authorization">
-                        <Link to='/signup' className="header__authorization__register">Регистрация</Link>
-                        <Link to='/signin' className="header__authorization__login">Войти</Link>
+                        <Link to='/signup' className="header__authorization-register">Регистрация</Link>
+                        <Link to='/signin' className="header__authorization-login">Войти</Link>
                     </nav>
                 )}
                 {isLogined && (isWidth > 768) && (
                     <nav className="header__links">
-                        <div className="header__links__container">
+                        <div className="header__links-container">
                             <NavLink to={`/movies`} className={({isActive}) => `${isActive ? 'header__link_active' : 'header__link'}`}>Фильмы</NavLink>
                             <NavLink to={`/saved-movies`} className={({isActive}) => `${isActive ? 'header__link_active' : 'header__link'}`}>Сохраненные фильмы</NavLink>
                         </div>
-                        <Link to='/profile' className="header__links__profile">Аккаунт</Link>
+                        <Link to='/profile' className="header__links-profile">Аккаунт</Link>
                     </nav>
                 )}
                 {

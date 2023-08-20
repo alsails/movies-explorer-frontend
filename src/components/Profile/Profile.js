@@ -35,8 +35,8 @@ function Profile({ signOut }) {
         inputName.disabled = false;
         inputEmail.disabled = false;
 
-        inputName.classList.add("form__profile__input_active");
-        inputEmail.classList.add("form__profile__input_active");
+        inputName.classList.add("form__input_active");
+        inputEmail.classList.add("form__input_active");
     }
 
     return (
@@ -45,18 +45,18 @@ function Profile({ signOut }) {
                 <div className="profile__container">
                     <form
                         action="submit"
-                        className="form__profile"
+                        className="form"
                         onSubmit={handleSubmit}
                     >
-                        <h1 className="form__profile__title">
+                        <h1 className="form__title">
                             Привет, {profile.name}!
                         </h1>
-                        <div className="form__profile__info">
-                            <lable className="form__profile__info__title">Имя</lable>
+                        <div className="form__info">
+                            <lable className="form__info-title">Имя</lable>
                             <input
                                 type="text"
                                 id="name-input"
-                                className="form__profile__input"
+                                className="form__input"
                                 name="name"
                                 value={values.name || ""}
                                 onChange={handleChange}
@@ -66,13 +66,13 @@ function Profile({ signOut }) {
                                 disabled
                             />
                         </div>
-                        <div className="form__profile__info">
-                            <lable className="form__profile__info__title">E-mail</lable>
+                        <div className="form__info">
+                            <lable className="form__info-title">E-mail</lable>
                             <input
                                 type="email"
                                 id="email-input"
                                 name="email"
-                                className="form__profile__input"
+                                className="form__input"
                                 onChange={handleChange}
                                 value={values.email || ""}
                                 placeholder="E-mail"
@@ -80,11 +80,11 @@ function Profile({ signOut }) {
                             />
                         </div>
                         {isChange && (
-                            <div className="profile__save">
-                                <span className="profile__save__error">
+                            <div className="form__save">
+                                <span className="form__save-error">
                                     При обновлении профиля произошла ошибка.
                                 </span>
-                                <button type="submit" className="profile__save__button">
+                                <button type="submit" className="form__save-button">
                                     Сохранить
                                 </button>
                             </div>

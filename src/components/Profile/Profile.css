@@ -7,7 +7,7 @@
     width: 100%;
 }
 
-.form__profile__title {
+.form__title {
     color: #000;
     text-align: center;
     font-size: 24px;
@@ -18,7 +18,7 @@
     padding: 0;
 }
 
-.form__profile__info {
+.form__info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,12 +27,12 @@
     padding: 17px 0 0;
 }
 
-.form__profile__info:first-of-type {
+.form__info:first-of-type {
     border-bottom: 1px solid #e8e8e8;
     padding: 0 0 16px;
 }
 
-.form__profile__info__title {
+.form__info-title {
     color: #000;
     font-size: 11px;
     font-weight: 500;
@@ -42,7 +42,7 @@
     margin: 0;
 }
 
-.form__profile__input {
+.form__input {
     border: none;
     color: #000;
     text-align: right;
@@ -55,11 +55,11 @@
     background-color: transparent;
 }
 
-.form__profile__input_active:hover {
+.form__input_active:hover {
     cursor: pointer;
 }
 
-.form__profile__input:focus {
+.form__input:focus {
     outline: 0.2px solid #e8e8e8;
     border-radius: 2px;
 
@@ -100,13 +100,13 @@
     margin: 0;
 }
 
-.profile__save {
+.form__save {
     margin: 189px auto 0;
     width: 100%;
     text-align: center;
 }
 
-.profile__save__error {
+.form__save-error {
     color: #FF004C;
     text-align: center;
     font-size: 11px;
@@ -119,11 +119,11 @@
     opacity: 0;
 }
 
-.profile__save__error_active {
+.form__save-error_active {
     opacity: 1;
 }
 
-.profile__save__button {
+.form__save-button {
     color: #FFF;
     text-align: center;
     font-size: 14px;
@@ -138,7 +138,7 @@
     border: none;
 }
 
-.profile__save__button_disable {
+.form__save-button_disable {
     background: #F8F8F8;
     color: #C2C2C2;
 }
@@ -154,7 +154,7 @@
         margin-bottom: 269px;
     }
 
-    .form__profile__title {
+    .form__title {
         margin-bottom: 96px;
     }
 
@@ -183,7 +183,7 @@
         width: 100%;
     }
 
-    .form__profile__title {
+    .form__title {
         margin-bottom: 80px;
     }
 

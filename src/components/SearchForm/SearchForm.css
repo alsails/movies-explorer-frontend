@@ -49,4 +49,9 @@
 
         row-gap: 45px;
     }
+
+    .searchForm__form {
+        display: flex;
+        flex-direction: column;
+    }
 }

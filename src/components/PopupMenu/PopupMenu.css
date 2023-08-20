@@ -50,7 +50,7 @@
 
 }
 
-.popupMenu__links__link {
+.popupMenu__links-link {
     text-align: center;
     padding: 0 0 28px;
     margin: 0;
@@ -76,7 +76,7 @@
 }
 
 
-.popupMenu__links__link:last-child {
+.popupMenu__links-link:last-child {
     padding: 0;
 }
 
