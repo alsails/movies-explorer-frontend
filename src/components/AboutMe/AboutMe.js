@@ -56,12 +56,12 @@ function AboutMe() {
                 <ul className="aboutMe__links">
                     {links.map((link, index) => {
                         return (
-                            <li key={index}>
+                            <li className="aboutMe__link" key={index}>
                                 <a
                                     href={link.href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="aboutMe__link"
+                                    className="aboutMe__link-url"
                                 >
                                     <p className="aboutMe__link-name">
                                         {link.name}

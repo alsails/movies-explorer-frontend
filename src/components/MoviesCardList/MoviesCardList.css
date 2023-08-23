@@ -19,6 +19,13 @@
 @media screen and (max-width: 1158px) {
     .moviesCardList {
         max-width: calc(100% - 30px * 2);
+        margin-bottom: 27px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .moviesCardList {
+        row-gap: 33px;
     }
 }
 

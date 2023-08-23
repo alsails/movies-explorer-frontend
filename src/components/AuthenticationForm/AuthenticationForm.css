@@ -13,7 +13,7 @@
     font-weight: 500;
 
     padding: 0;
-    margin: 40px 0;
+    margin: 38px 0 41px;
 }
 
 .authenticationForm__form {
@@ -86,7 +86,7 @@
     font-size: 14px;
     font-weight: 500;
 
-    margin: 142px auto 16px;
+    margin: 146px auto 30px;
     padding: 13px 0 15px;
 
     border: none;
@@ -105,7 +105,7 @@
     display: flex;
     flex-direction: row;
 
-    margin: 0 auto;
+    margin: 17px auto 0;
 
     justify-content: center;
     column-gap: 6px;
@@ -144,16 +144,21 @@
     }
 
     .authenticationForm__title {
-        margin: 38px 0 35px;
+        margin: 38px 0 40px;
     }
 
-    .form__input {
-        margin-bottom: 15px;
+    .authenticationForm__form-input {
+        margin-bottom: 21px;
     }
 
-    .authenticationForm__button {
-        margin: 139px 0 17px;
+    .authenticationForm__form-button {
+        margin: 147px 0 17px;
     }
+
+    .authenticationForm__form-button_regster {
+        margin-top: 58px;
+    }
+
 }
 
 @media screen and (max-width: 450px) {
@@ -176,18 +181,21 @@
     }
 
     .authenticationForm__title {
-        margin: 48px auto 75px;
+        margin: 48px auto 80px;
     }
 
-    .authenticationForm__button {
-        margin: 230px auto 14px;
+    .authenticationForm__form-button {
+        margin: 233px auto 14px;
         font-size: 12px;
-        padding: 15px 0 17px;
-
+        padding: 15px 0 16px;
     }
 
-    .authenticationForm__button_register {
-        margin-top: 141px;
+    .authenticationForm__form-button_regster {
+        margin-top: 145px;
+    }
+
+    .authenticationForm__links {
+        margin-top: 103px;
     }
 
     .authenticationForm__links-text {
@@ -198,7 +206,7 @@
         font-size: 12px;
     }
 
-    .form__input:nth-child(2) {
-        margin-bottom: 12px;
+    .authenticationForm__form-input:nth-child(2) {
+        margin-bottom: 22px;
     }
 }

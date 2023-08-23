@@ -1,34 +1,40 @@
 import "./NavTab.css";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 function NavTab() {
     return (
         <nav className="navTab">
             <ul className="navTab__links">
-                <Link
-                    to="aboutProject"
-                    className="navTab__link"
-                    smooth={true}
-                    duration={500}
-                >
-                    О проекте
-                </Link>
-                <Link
-                    to="techs"
-                    className="navTab__link"
-                    smooth={true}
-                    duration={500}
-                >
-                    Технологии
-                </Link>
-                <Link
-                    to="aboutMe"
-                    className="navTab__link"
-                    smooth={true}
-                    duration={500}
-                >
-                    Студент
-                </Link>
+                <li className="navTab__link">
+                    <Link
+                        to="aboutProject"
+                        className="navTab__link"
+                        smooth={true}
+                        duration={500}
+                    >
+                        О проекте
+                    </Link>
+                </li>
+                <li className="navTab__link">
+                    <Link
+                        to="techs"
+                        className="navTab__link"
+                        smooth={true}
+                        duration={500}
+                    >
+                        Технологии
+                    </Link>
+                </li>
+                <li className="navTab__link"> 
+                    <Link
+                        to="aboutMe"
+                        className="navTab__link"
+                        smooth={true}
+                        duration={500}
+                    >
+                        Студент
+                    </Link>
+                </li>
             </ul>
         </nav>
     );

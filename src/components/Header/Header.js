@@ -37,7 +37,7 @@ function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
                 )}
                 {
                     isLogined && (isWidth < 769) &&
-                        <div onClick={togglePopup} class={`header__hamburger-menu ${isOpened ? 'header__hamburger-menu_active' : ''}`}>
+                        <div onClick={togglePopup} className={`header__hamburger-menu ${isOpened ? 'header__hamburger-menu_active' : ''}`}>
                             <span></span>
                             <span></span>
                             <span></span>

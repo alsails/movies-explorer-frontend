@@ -75,6 +75,12 @@
     }
 }
 
+@media screen and (max-width: 768px) { 
+    .footer__links {
+        margin-top: -4px;
+    }
+}
+
 @media screen and (max-width: 360px) {
     .footer__conatiner {
         max-width: calc(100% - 10px * 2);
@@ -97,7 +103,8 @@
         flex-direction: column;
         order: -1;
         text-align: center;
-        row-gap: 13px;
+        row-gap: 7px;
+        margin-top: -6px;
     }
 
     .footer__links-link {

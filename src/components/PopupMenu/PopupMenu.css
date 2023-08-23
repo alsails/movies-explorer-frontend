@@ -61,7 +61,7 @@
     opacity: .7;
 }
 
-.popupMenu__link_active {
+.popupMenu__link-active {
     text-decoration: none;
     color: #000;
     text-align: center;
@@ -94,6 +94,7 @@
     background: #F9F9F9;
 
     margin: 0 auto 90px;
+    text-decoration: none;
 }
 
 .popupMenu__button {
@@ -116,7 +117,7 @@
         padding-bottom: 24px;
     }
 
-    .popupMenu__link_active {
+    .popupMenu__link-active {
         padding-bottom: 7px; 
         margin-bottom: 15px;
     }

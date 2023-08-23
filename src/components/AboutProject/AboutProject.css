@@ -1,7 +1,7 @@
 .aboutProject__container {
     max-width: 1140px;
     margin: 0 auto;
-    padding-bottom: 110px;
+    padding-bottom: 105px;
 }
 
 .aboutProject__info {
@@ -90,7 +90,7 @@
 @media screen and (max-width: 768px) {
 
     .aboutProject__info {
-        margin-top: 72px;
+        margin-top: 70px;
         row-gap: 23px;
     }
 
@@ -105,6 +105,10 @@
 
     .aboutProject__time {
         margin-top: 93px;
+    }
+
+    .aboutProject__container {
+        padding-bottom: 92px;
     }
 }
 
@@ -121,7 +125,7 @@
         row-gap: 16px;
     }
 
-    .aboutProject__info-text__third {
+    .aboutProject__info-text_third {
         grid-row: 2;
         margin-bottom: 40px;
     }
