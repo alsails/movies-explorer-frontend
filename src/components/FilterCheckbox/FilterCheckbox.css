@@ -1,0 +1,119 @@
+.filterCheckbox {
+    border-left: 1px solid #CBCBCB;
+
+    margin: 16px 0 16px 19px;
+}
+
+.filterCheckbox__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 10px 0 10px 29px;
+}
+
+.filterCheckbox__text {
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+
+    margin: 0;
+    padding: 0 30px 0 14px;
+}
+
+.checkbox{display:none}
+
+.switch {
+    width: 36px;
+    height: 20px;
+    background: #EBEBEB;
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 20px; 
+}
+
+.switch:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.switch:before {
+    content: ' ';
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    background: #F5F5F5;
+    z-index: 1;
+    border-radius: 20px; 
+}
+
+.switch:after {
+    content: ' ';
+    height: 16px;
+    width: 16px;
+    border-radius: 20px;
+    z-index: 2;
+    background: #FFFFFF;
+    position: absolute;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    top: 2px;
+    left: 2px;
+}
+
+.switchOn , .switchOn:before {
+    background: #2BE080 !important;
+}
+
+.switchOn:after {
+    left: 18px !important;
+}
+
+@media screen and (max-width: 768px) {
+    .filterCheckbox__container {
+        padding-left: 19px;
+    }
+
+    .filterCheckbox__text {
+        padding-left: 15px;
+        padding-right: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .filterCheckbox__container {
+        padding-left: 19px;
+    }
+
+    .filterCheckbox__text {
+        padding-left: 10px;
+        padding-right: 15px;
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .filterCheckbox {
+        border: none;
+        width: 148px;
+        margin: 0 auto;
+        padding: 45px 0 0 0;
+    }
+
+    .filterCheckbox__container {
+        padding: 0;
+    }
+
+    .filterCheckbox__text {
+        font-size: 11px;
+        padding: 0 0 0 13px;
+    }
+}

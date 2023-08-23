@@ -1,0 +1,33 @@
+.blockTitle {
+    margin: 0 auto;
+    padding-top: 110px;
+    border-bottom: 1px solid #000;
+}
+
+.blockTitle__title {
+    color:  #000;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.88px;
+
+    margin: 0;
+    padding: 0 0 23px;
+}
+
+@media screen and (max-width: 768px) {
+    .blockTitle {
+        padding-top: 90px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .blockTitle {
+        padding-top: 70px;
+    }
+
+    .blockTitle__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding-bottom: 28px;
+    }
+}

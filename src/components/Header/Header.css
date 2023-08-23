@@ -1,0 +1,240 @@
+.header {
+    margin: 18px auto 36px;
+}
+
+.header__container {
+    max-width: 1140px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header__logo {
+    width: 38px;
+    height: 38px;
+    margin: 0 44px 0 0;
+}
+
+.header__logo:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.header__authorization {
+    margin-top: 8px;
+}
+
+.header__authorization-register {
+    text-decoration: none;
+    color: #000;
+
+    margin: 0 30px 0 0;
+    padding: 0;
+
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.header__authorization-register:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.header__authorization-login {
+    color: #000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+
+    padding: 8px 20px 9px;
+    background-color: #2BE080;
+    border-radius: 3px;
+    border: none;
+    text-decoration: none;
+
+}
+
+.header__authorization-login:hover {
+    cursor: pointer;
+    opacity: .8;
+
+}
+
+.header__links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.header__link {
+    color: #000;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+
+    text-decoration: none;
+
+    margin: 0;
+    padding: 0 18px 0 0;
+}
+
+.header__link:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.header__link:last-of-type {
+    padding-right: 0;
+}
+
+.header__link_active {
+    font-weight: 500;
+    color: #000;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 500;
+
+    text-decoration: none;
+
+    margin: 0;
+    padding: 0 18px 0 0;
+}
+
+
+
+.header__links-profile {
+    text-decoration: none;
+    border: none;
+
+    border-radius: 20px;
+    background: #F9F9F9;
+
+    color: #000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+
+    margin: 0;
+    padding: 8px 20px;
+}
+
+.header__links-profile:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.header__hamburger-menu {
+    width: 28px;
+	height: 23px;
+	position: relative;
+	z-index:2;
+
+    margin-top: 8px;
+    margin-right: 8px;
+}
+
+.header__hamburger-menu:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.header__hamburger-menu span {
+	width: 28px;
+	height: 3px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #000000;
+	transition: all 0.5s;
+}
+
+.header__hamburger-menu span:nth-of-type(2) {
+	top: calc(50% - 7px);
+}
+.header__hamburger-menu span:nth-of-type(3) {
+	top: calc(50% + 7px);
+}
+
+.header__hamburger-menu_active {
+    margin: 4px -10px 0 0 ;
+}
+
+.header__hamburger-menu_active:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+.header__hamburger-menu_active span:nth-of-type(1) {
+    display: none;
+}
+
+.header__hamburger-menu_active span:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(45deg);  
+}
+
+.header__hamburger-menu_active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, 0%) rotate(-45deg); 
+}
+
+@media screen and (max-width: 1158px) {
+    .header__container {
+        width: calc(100% - 30px*2);
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .header {
+        margin-bottom: 32px;
+    }
+    
+    .header__authorization {
+        margin-top: 8px;
+    }
+
+    .header__container {
+        width: calc(100% - 14px*2);
+    }
+
+    .header__authorization-register {
+        font-size: 10px;
+        line-height: 16px;
+
+        margin-right: 14px;
+    }
+
+    .header__authorization-login {
+        font-size: 10px;
+        line-height: 16px;
+
+        padding: 7px 12px;
+    }
+
+    .header__hamburger-menu {
+        width: 22px;
+        height: 20.5px;
+        position: relative;
+        z-index:2;
+    
+        margin-top: 9px;
+        margin-right: 9px;
+    }
+
+    .header__hamburger-menu span {
+        width: 23px;
+        height: 2.5px;
+    }
+
+    .header__hamburger-menu_active {
+        margin: -5px -1px 0 0;
+    }
+}
