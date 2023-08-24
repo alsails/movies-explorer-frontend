@@ -1,24 +1,17 @@
-import { useEffect } from "react";
-import "./AuthenticationForm.css";
+import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../images/icons/logo.svg";
+import "./AuthenticationForm.css";
+import { useFormWithValidation } from "./useFormWithValidation"; // Импорт вашего кастомного хука
 
 function AuthenticationForm({
     title,
     buttonText,
     onSubmit,
-    values,
-    handleChange,
     name,
-    errors,
-    isValid,
-    errorMessage,
-    setError
 }) {
-
-    useEffect(() => {
-        setError('')
-    }, [])
+    // Используем кастомный хук
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     return (
         <div className="authenticationForm">
@@ -39,7 +32,7 @@ function AuthenticationForm({
                 >
                     {name === "register" && (
                         <>
-                            <lable className="authenticationForm__form-lable">Имя</lable>
+                            <label className="authenticationForm__form-label">Имя</label>
                             <input
                                 type="text"
                                 id="name-input"
@@ -52,12 +45,12 @@ function AuthenticationForm({
                                 maxLength="30"
                                 required
                             />
-                            <span className={`authenticationForm__form-error authenticationForm__form-error_name ${errors.name ? "authenticationForm__form-error_visible" : ""}`}>
+                            <span className="authenticationForm__form-error">
                                 {errors.name}
                             </span>
                         </>
                     )}
-                    <lable className="authenticationForm__form-lable">E-mail</lable>
+                    <label className="authenticationForm__form-label">E-mail</label>
                     <input
                         type="email"
                         id="email-input"
@@ -68,10 +61,10 @@ function AuthenticationForm({
                         placeholder="E-mail"
                         required
                     />
-                    <span className={`authenticationForm__form-error authenticationForm__form-error_email ${errors.email ? "authenticationForm__form-error_visible" : ""}`}>
+                    <span className="authenticationForm__form-error">
                         {errors.email}
                     </span>
-                    <lable className="authenticationForm__form-lable">Пароль</lable>
+                    <label className="authenticationForm__form-label">Пароль</label>
                     <input
                         id="password-input"
                         type="password"
@@ -84,18 +77,19 @@ function AuthenticationForm({
                         maxLength="30"
                         required
                     />
-                    <span className={`authenticationForm__form-error authenticationForm__form-error_password ${errors.password ? "authenticationForm__form-error_visible" : ""}`}>
+                    <span className="authenticationForm__form-error">
                         {errors.password}
                     </span>
-                    <span id="input-error" className={`authenticationForm__form-error authenticationForm__form-error_form ${errorMessage ? "authenticationForm__form-error_visible" : ""}`}>
-                        {errorMessage}
+                    <span id="input-error" className="authenticationForm__form-error">
+                        При авторизации произошла ошибка. Токен не передан или
+                        передан не в том формате.
                     </span>
                     <button
                         className={`authenticationForm__form-button ${
                             name === "register"
-                                ? "authenticationForm__form-button_regster"
+                                ? "authenticationForm__form-button_register"
                                 : ""
-                        } ${!isValid && "authenticationForm__form-button_disable"}`}
+                        }`}
                         type="submit"
                         disabled={!isValid}
                     >

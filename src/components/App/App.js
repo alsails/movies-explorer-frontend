@@ -23,6 +23,7 @@ function App() {
     const [isLogined, setIsLogined] = useState(false);
     const [movies, setMovies] = useState([]);
     const [currentUser, setCurrentUser] = useState({})
+    const [error, setError] = useState("");
 
     const navigate = useNavigate();
 
@@ -89,7 +90,10 @@ function App() {
             navigate("/movies", { replace: true });
         })
         .catch(err => {
-            console.log(err)
+            if (err.message === 'Failed to fetch') {
+                setError('500 На сервере произошла ошибка.');
+            }
+            else setError(err.message);
         })
       }
 
@@ -100,8 +104,11 @@ function App() {
             setIsLogined(true)
         }
         )
-        .catch((err) => {
-            console.log(err)
+        .catch(err => {
+            if (err.message === 'Failed to fetch') {
+                setError('500 На сервере произошла ошибка.');
+            }
+            else setError(err.message);
         })
       }
 
@@ -109,8 +116,8 @@ function App() {
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
             <Routes>
-                <Route path="/signup" element={<Register handleRegister={handleRegister}/>} />
-                <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
+                <Route path="/signup" element={<Register errorMessage={error} handleRegister={handleRegister} setError={setError}/>} />
+                <Route path="/signin" element={<Login errorMessage={error} handleLogin={handleLogin} setError={setError}/>} />
                 <Route
                     path="/"
                     element={

@@ -6,15 +6,17 @@ const BASE_URL =
 function checkResponse(res) {
     if (res.ok) {
         return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    } else
+        return res.json().then((data) => {
+            throw new Error(data.message);
+        });
 }
 
 function request(endpoint, options) {
     return fetch(`${BASE_URL}/${endpoint}`, options)
         .then(checkResponse)
-        .then((res) => {
-            return res;
+        .then((error) => {
+            throw new Error(error);
         });
 }
 
@@ -28,7 +30,7 @@ export const signup = ({ name, password, email }) => {
     });
 };
 
-export const signin = ({email, password}) => {
+export const signin = ({ email, password }) => {
     return request(`signin`, {
         method: "POST",
         headers: {
@@ -79,4 +81,4 @@ export const getUserInfo = () => {
     }).then((data) => {
         return data;
     });
-}
+};
