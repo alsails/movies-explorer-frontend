@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "../../hooks/useForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import profile from "../../utils/profile";
 import "./Profile.css";
 
 function Profile({ signOut }) {
+    const currentUser = useContext(CurrentUserContext)
+
     const [isChange, setIsChange] = useState(false);
     const { values, handleChange, setValues } = useForm({});
 
@@ -12,8 +15,8 @@ function Profile({ signOut }) {
 
     useEffect(() => {
         setValues({
-            name: profile.name,
-            email: profile.email,
+            name: currentUser.name,
+            email: currentUser.email,
         });
     }, []);
 

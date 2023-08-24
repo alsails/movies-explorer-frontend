@@ -1,5 +1,5 @@
 import "./AuthenticationForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../images/icons/logo.svg";
 
 function AuthenticationForm({
@@ -9,16 +9,9 @@ function AuthenticationForm({
     values,
     handleChange,
     name,
-    login,
 }) {
-    const navigate = useNavigate();
 
-    function authorization() {
-        if (name === "login") {
-            login();
-            navigate("/movies", { replace: true });
-        }
-    }
+
     return (
         <div className="authenticationForm">
             <div className="authenticationForm__container">
@@ -82,7 +75,6 @@ function AuthenticationForm({
                         передан не в том формате.
                     </span>
                     <button
-                        onClick={authorization}
                         className={`authenticationForm__form-button ${
                             name === "register"
                                 ? "authenticationForm__form-button_regster"

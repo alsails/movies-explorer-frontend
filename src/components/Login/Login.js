@@ -1,7 +1,7 @@
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useForm } from "../../hooks/useForm";
 
-function Login({ login }) {
+function Login({ handleLogin }) {
     const { values, handleChange } = useForm({});
 
     const handleSubmit = (e) => {
@@ -9,6 +9,7 @@ function Login({ login }) {
         if (!values.email || !values.password) {
             return;
         }
+        handleLogin(values)
     };
 
     return (
@@ -21,7 +22,6 @@ function Login({ login }) {
                     handleChange={handleChange}
                     onSubmit={handleSubmit}
                     values={values}
-                    login={login}
                 />
             </section>
         </main>

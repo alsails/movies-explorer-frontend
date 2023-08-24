@@ -2,9 +2,7 @@ import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useForm } from "../../hooks/useForm";
 import "../AuthenticationForm/AuthenticationForm.css";
 
-function Register() {
-    let error;
-    const spanError = document.querySelector("form__error");
+function Register({handleRegister}) {
     const { values, handleChange } = useForm({});
 
     const handleSubmit = (e) => {
@@ -12,6 +10,7 @@ function Register() {
         if (!values.email || !values.password || !values.name) {
             return;
         }
+        handleRegister(values)
     };
 
     return (
