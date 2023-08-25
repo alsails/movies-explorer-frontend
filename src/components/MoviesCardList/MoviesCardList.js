@@ -6,7 +6,6 @@ import More from "../More/More";
 
 function MoviesCardList({isSaved}) {
     const [isWidth, setIsWidth] = useState(window.innerWidth);
-    const [isInitialCountMovies, setIsInitialCountMovies] = useState(getInitialCountMovies(isWidth));
     const [isAddCountMovies, setAddCountMovies] = useState(addCountMovies(isWidth));
     const [isCountMovies, setIsCountMovies] = useState(getInitialCountMovies(isWidth));
     const [isMore, setIsMore] = useState(true);
@@ -18,8 +17,6 @@ function MoviesCardList({isSaved}) {
             }, 300);
         });
 
-
-        setIsInitialCountMovies(getInitialCountMovies(isWidth))
         setAddCountMovies(addCountMovies(isWidth))
         countMoreMovies()
     }, [])
