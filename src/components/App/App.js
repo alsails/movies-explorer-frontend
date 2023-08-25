@@ -90,6 +90,7 @@ function App() {
             navigate("/movies", { replace: true });
         })
         .catch(err => {
+            console.log(err)
             if (err.message === 'Failed to fetch') {
                 setError('500 На сервере произошла ошибка.');
             }

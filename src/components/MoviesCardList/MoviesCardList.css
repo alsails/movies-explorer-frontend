@@ -42,7 +42,7 @@
     }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 550px) {
     .moviesCardList {
         grid-template-columns: 1fr;
         margin-top: 49px;

@@ -15,7 +15,7 @@ function checkResponse(res) {
 function request(endpoint, options) {
     return fetch(`${BASE_URL}/${endpoint}`, options)
         .then(checkResponse)
-        .then((error) => {
+        .catch((error) => {
             throw new Error(error);
         });
 }
