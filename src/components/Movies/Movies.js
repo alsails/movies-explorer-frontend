@@ -2,12 +2,12 @@ import More from "../More/More";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Movies({addMoviesInLocalStoreg}) {
+function Movies({addMoviesInLocalStoreg, filteredMovies}) {
     const isSaved = false;
     return (
         <main>
-            <SearchForm addMoviesInLocalStoreg={addMoviesInLocalStoreg} />
-            <MoviesCardList isSaved={isSaved} />
+            <SearchForm filteredMovies = {filteredMovies} addMoviesInLocalStoreg={addMoviesInLocalStoreg} />
+            <MoviesCardList isSaved={isSaved} filteredMovies = {filteredMovies}/>
         </main>
     );
 }

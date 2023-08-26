@@ -1,8 +1,12 @@
-import React from 'react';
+import { useEffect } from 'react';
 import './FilterCheckbox.css';
 
 
-function FilterCheckbox({isActiveShort, setIsActiveShort}) {
+function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies}) {
+
+    useEffect(() => {
+        setIsActiveShort(filteredMovies.isActiveShort)
+    }, [])
 
     function switchOn() {
         setIsActiveShort(!isActiveShort); // Обновляем состояние isActive

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import "./MoviesCardList.css";
-import movies from "../../utils/movies";
 import MovieCard from "../MovieCard/MovieCard";
 import More from "../More/More";
 
-function MoviesCardList({ isSaved }) {
+function MoviesCardList({ isSaved, filteredMovies }) {
     const [isWidth, setIsWidth] = useState(window.innerWidth);
     const [isInitialCountMovies, setIsInitialCountMovies] = useState(
         getInitialCountMovies(isWidth)
@@ -15,9 +14,6 @@ function MoviesCardList({ isSaved }) {
     const [isCountMovies, setIsCountMovies] = useState(isInitialCountMovies);
 
     const [isMore, setIsMore] = useState(true);
-    
-    const dataInLocalStorege = localStorage.getItem("movies");
-    const moviesFromLocalStorage = JSON.parse(dataInLocalStorege) || [];
 
     useEffect(() => {
         window.addEventListener("resize", function () {
@@ -28,8 +24,6 @@ function MoviesCardList({ isSaved }) {
 
         setIsInitialCountMovies(getInitialCountMovies(isWidth));
         setAddCountMovies(addCountMovies(isWidth));
-        countMoreMovies();
-
     }, [isWidth]);
 
     useEffect(() => {
@@ -57,13 +51,12 @@ function MoviesCardList({ isSaved }) {
     }
 
     function countMoreMovies() {
-        console.log('isCountMovies ', isCountMovies)
-        setIsMore(isCountMovies < moviesFromLocalStorage.filteredMovies.length);
+        setIsMore(filteredMovies.filteredMovies && isCountMovies <= filteredMovies.filteredMovies.length);
     }
 
     useEffect(() => {
         countMoreMovies();
-    }, [isCountMovies]);
+    }, [filteredMovies]);
 
     return (
         <>
@@ -72,12 +65,19 @@ function MoviesCardList({ isSaved }) {
                     isSaved ? "moviesCardList__saved" : ""
                 }`}
             >
-                {dataInLocalStorege &&
-                    moviesFromLocalStorage.filteredMovies
-                    .slice(0, isCountMovies).map((movie, index) => {
-                        return <MovieCard movie={movie} key={index} />;
-                    })}
+                {!filteredMovies.answer &&
+                    filteredMovies.filteredMovies.length &&
+                    filteredMovies.filteredMovies
+                        .slice(0, isCountMovies)
+                        .map((movie, index) => {
+                            return <MovieCard movie={movie} key={index} />;
+                        })}
             </section>
+            {filteredMovies.answer && (
+                <p className="moviesCardList__answer">
+                    {filteredMovies.answer}
+                </p>
+            )}
             {!isSaved && isMore && <More handleaddMoreMovies={addMoreMovies} />}
         </>
     );

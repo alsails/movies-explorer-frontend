@@ -22,6 +22,7 @@ function App() {
     const [isPopupMenu, setIsPopupMenu] = useState(false);
     const [isLogined, setIsLogined] = useState(false);
     const [movies, setMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState(JSON.parse(localStorage.getItem("movies")));
     const [currentUser, setCurrentUser] = useState({});
     const [error, setError] = useState("");
 
@@ -114,11 +115,10 @@ function App() {
             });
     }
 
-    function filterMovies(inputValue, isActiveShort) {
+    function handelFilterMovies(inputValue, isActiveShort) {
         const isRussianRegex = /[а-яА-ЯЁё]/.test(inputValue);
 
         return movies.filter((movie) => {
-            console.log(movie)
             const movieToCompare = isRussianRegex ? movie.nameRU : movie.nameEN;
             const matchesMovies = movieToCompare
                 .toLowerCase()
@@ -133,16 +133,30 @@ function App() {
     }
 
     function addMoviesInLocalStoreg({ inputValue, isActiveShort }) {
-        const filteredMovies = filterMovies(inputValue, isActiveShort); 
+        const filterMovies = handelFilterMovies(inputValue, isActiveShort); 
 
-        const dataToSave = {
-            searchValue: inputValue,
-            isActiveShort: isActiveShort,
-            filteredMovies: filteredMovies,
-        };
+        if (filterMovies.length === 0) {
+            const dataToSave = {
+                searchValue: inputValue,
+                isActiveShort: isActiveShort,
+                answer: "Ничего не найдено",
+            };
 
-        localStorage.setItem("movies", JSON.stringify(dataToSave));
+            localStorage.setItem("movies", JSON.stringify(dataToSave));
+            setFilteredMovies(dataToSave)
+        } else {
+            const dataToSave = {
+                searchValue: inputValue,
+                isActiveShort: isActiveShort,
+                filteredMovies: filterMovies,
+            };
+    
+            localStorage.setItem("movies", JSON.stringify(dataToSave));
+            setFilteredMovies(dataToSave)
+        }
     }
+
+    window.addEventListener('storage', (event) => console.log(event));
 
     return (
         <div className="page">
@@ -197,6 +211,7 @@ function App() {
                                     addMoviesInLocalStoreg={
                                         addMoviesInLocalStoreg
                                     }
+                                    filteredMovies = {filteredMovies}
                                 />
                                 <Footer />
                             </ProtectedRouteElement>

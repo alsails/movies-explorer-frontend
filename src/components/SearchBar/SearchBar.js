@@ -1,7 +1,12 @@
+import { useEffect } from 'react';
+
 import "./SearchBar.css";
 import search from "../../images/icons/search.svg";
 
-function SearchBar({ handleChange, handleSubmit, values }) {
+function SearchBar({ handleChange, values, filteredMovies, setValues }) {
+    useEffect(() => {
+        setValues({searchValue: filteredMovies.searchValue})
+    }, [])
     return (
         <div className="searchBar">
             <img
@@ -14,7 +19,7 @@ function SearchBar({ handleChange, handleSubmit, values }) {
                 id="searchValue-input"
                 className="searchBar__input"
                 name="searchValue"
-                value={values.searchValue || ""}
+                value={values.searchValue || ''}
                 onChange={handleChange}
                 placeholder="Фильм"
                 required
