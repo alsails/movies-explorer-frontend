@@ -12,10 +12,12 @@ function MoviesCardList({ isSaved }) {
     const [isAddCountMovies, setAddCountMovies] = useState(
         addCountMovies(isWidth)
     );
-    const [isCountMovies, setIsCountMovies] = useState(
-        getInitialCountMovies(isWidth)
-    );
+    const [isCountMovies, setIsCountMovies] = useState(isInitialCountMovies);
+
     const [isMore, setIsMore] = useState(true);
+    
+    const dataInLocalStorege = localStorage.getItem("movies");
+    const moviesFromLocalStorage = JSON.parse(dataInLocalStorege) || [];
 
     useEffect(() => {
         window.addEventListener("resize", function () {
@@ -32,7 +34,6 @@ function MoviesCardList({ isSaved }) {
 
     useEffect(() => {
         setIsCountMovies(isInitialCountMovies);
-        countMoreMovies();
     }, [isInitialCountMovies, isAddCountMovies]);
 
     function getInitialCountMovies(width) {
@@ -52,12 +53,12 @@ function MoviesCardList({ isSaved }) {
     }
 
     function addMoreMovies() {
-        console.log(isAddCountMovies);
         setIsCountMovies((prevCount) => prevCount + isAddCountMovies);
     }
 
     function countMoreMovies() {
-        if (isCountMovies >= movies.length) setIsMore(false);
+        console.log('isCountMovies ', isCountMovies)
+        setIsMore(isCountMovies < moviesFromLocalStorage.filteredMovies.length);
     }
 
     useEffect(() => {
@@ -71,9 +72,11 @@ function MoviesCardList({ isSaved }) {
                     isSaved ? "moviesCardList__saved" : ""
                 }`}
             >
-                {movies.slice(0, isCountMovies).map((movie, index) => {
-                    return <MovieCard movie={movie} key={index} />;
-                })}
+                {dataInLocalStorege &&
+                    moviesFromLocalStorage.filteredMovies
+                    .slice(0, isCountMovies).map((movie, index) => {
+                        return <MovieCard movie={movie} key={index} />;
+                    })}
             </section>
             {!isSaved && isMore && <More handleaddMoreMovies={addMoreMovies} />}
         </>

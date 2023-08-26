@@ -1,11 +1,11 @@
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies() {
+function SavedMovies({addMoviesInLocalStoreg}) {
     const isSaved = true;
     return (
         <main>
-            <SearchForm />
+            <SearchForm addMoviesInLocalStoreg={addMoviesInLocalStoreg} />
             <MoviesCardList isSaved={isSaved}/>
         </main>
     );

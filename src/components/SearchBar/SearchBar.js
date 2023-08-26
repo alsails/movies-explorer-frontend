@@ -1,7 +1,7 @@
 import "./SearchBar.css";
 import search from "../../images/icons/search.svg";
 
-function SearchBar() {
+function SearchBar({ handleChange, handleSubmit, values }) {
     return (
         <div className="searchBar">
             <img
@@ -11,11 +11,18 @@ function SearchBar() {
             />
             <input
                 type="text"
-                placeholder="Фильм"
+                id="searchValue-input"
                 className="searchBar__input"
+                name="searchValue"
+                value={values.searchValue || ""}
+                onChange={handleChange}
+                placeholder="Фильм"
                 required
             />
-            <button type="submit" className="searchBar__button" />
+            <button
+                type="submit"
+                className="searchBar__button"
+            />
         </div>
     );
 }

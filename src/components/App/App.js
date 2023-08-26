@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext"
-import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute"
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Footer from "../Footer/Footer";
@@ -22,7 +22,7 @@ function App() {
     const [isPopupMenu, setIsPopupMenu] = useState(false);
     const [isLogined, setIsLogined] = useState(false);
     const [movies, setMovies] = useState([]);
-    const [currentUser, setCurrentUser] = useState({})
+    const [currentUser, setCurrentUser] = useState({});
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
@@ -44,22 +44,21 @@ function App() {
     }
 
     function getUserInfo() {
-        mainApi.getUserInfo().then((info) => setCurrentUser(info))
+        mainApi.getUserInfo().then((info) => setCurrentUser(info));
     }
 
     useEffect(() => {
         if (isLogined) {
             api.getMovies()
-              .then((movies) => {
-                setMovies(movies);
-              })
-              .catch((err) => {
-                console.log(err);
-              });
-              getUserInfo()
-          }
+                .then((movies) => {
+                    setMovies(movies);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+            getUserInfo();
+        }
     }, [isLogined]);
-
 
     useEffect(() => {
         function handleTokenCheck() {
@@ -83,104 +82,162 @@ function App() {
     }, []);
 
     function handleLogin(formValue) {
-        mainApi.signin(formValue)
-        .then(() => {
-            setIsLogined(true)
-            getUserInfo()
-            navigate("/movies", { replace: true });
-        })
-        .catch(err => {
-            console.log(err)
-            if (err.message === 'Failed to fetch') {
-                setError('500 На сервере произошла ошибка.');
-            }
-            else setError(err.message);
-        })
-      }
+        mainApi
+            .signin(formValue)
+            .then(() => {
+                setIsLogined(true);
+                getUserInfo();
+                navigate("/movies", { replace: true });
+            })
+            .catch((err) => {
+                console.log(err);
+                if (err.message === "Failed to fetch") {
+                    setError("500 На сервере произошла ошибка.");
+                } else setError(err.message);
+            });
+    }
 
-      function handleRegister(formValue) {
-        mainApi.signup(formValue)
-        .then((res) => {
-            handleLogin({ email: formValue.email, password: formValue.password });
-            setIsLogined(true)
-        }
-        )
-        .catch(err => {
-            if (err.message === 'Failed to fetch') {
-                setError('500 На сервере произошла ошибка.');
+    function handleRegister(formValue) {
+        mainApi
+            .signup(formValue)
+            .then((res) => {
+                handleLogin({
+                    email: formValue.email,
+                    password: formValue.password,
+                });
+                setIsLogined(true);
+            })
+            .catch((err) => {
+                if (err.message === "Failed to fetch") {
+                    setError("500 На сервере произошла ошибка.");
+                } else setError(err.message);
+            });
+    }
+
+    function filterMovies(inputValue, isActiveShort) {
+        const isRussianRegex = /[а-яА-ЯЁё]/.test(inputValue);
+
+        return movies.filter((movie) => {
+            console.log(movie)
+            const movieToCompare = isRussianRegex ? movie.nameRU : movie.nameEN;
+            const matchesMovies = movieToCompare
+                .toLowerCase()
+                .includes(inputValue.toLowerCase());
+
+            if (isActiveShort) {
+                return matchesMovies && movie.duration <= 40; 
             }
-            else setError(err.message);
-        })
-      }
+
+            return matchesMovies;
+        });
+    }
+
+    function addMoviesInLocalStoreg({ inputValue, isActiveShort }) {
+        const filteredMovies = filterMovies(inputValue, isActiveShort); 
+
+        const dataToSave = {
+            searchValue: inputValue,
+            isActiveShort: isActiveShort,
+            filteredMovies: filteredMovies,
+        };
+
+        localStorage.setItem("movies", JSON.stringify(dataToSave));
+    }
 
     return (
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
-            <Routes>
-                <Route path="/signup" element={<Register errorMessage={error} handleRegister={handleRegister} setError={setError}/>} />
-                <Route path="/signin" element={<Login errorMessage={error} handleLogin={handleLogin} setError={setError}/>} />
-                <Route
-                    path="/"
-                    element={
-                        <>
-                            <Header
-                                isLogined={isLogined}
-                                openPopupMenu={openPopupMenu}
-                                closeAllPopup={closeAllPopup}
-                                isOpened={isPopupMenu}
+                <Routes>
+                    <Route
+                        path="/signup"
+                        element={
+                            <Register
+                                errorMessage={error}
+                                handleRegister={handleRegister}
+                                setError={setError}
                             />
-                            <Main />
-                            <Footer />
-                        </>
-                    }
-                />
-                <Route
-                    path="/movies"
-                    element={
-                        <ProtectedRouteElement isLogined={isLogined}>
-                            <Header
-                                isLogined={isLogined}
-                                openPopupMenu={openPopupMenu}
-                                closeAllPopup={closeAllPopup}
-                                isOpened={isPopupMenu}
+                        }
+                    />
+                    <Route
+                        path="/signin"
+                        element={
+                            <Login
+                                errorMessage={error}
+                                handleLogin={handleLogin}
+                                setError={setError}
                             />
-                            <Movies />
-                            <Footer />
-                        </ProtectedRouteElement>
-                    }
-                />
-                <Route
-                    path="/saved-movies"
-                    element={
-                        <ProtectedRouteElement isLogined={isLogined}>
-                            <Header
-                                isLogined={isLogined}
-                                openPopupMenu={openPopupMenu}
-                                closeAllPopup={closeAllPopup}
-                                isOpened={isPopupMenu}
-                            />
-                            <SavedMovies />
-                            <Footer />
-                        </ProtectedRouteElement>
-                    }
-                />
-                <Route
-                    path="/profile"
-                    element={
-                        <ProtectedRouteElement isLogined={isLogined}>
-                            <Header
-                                isLogined={isLogined}
-                                openPopupMenu={openPopupMenu}
-                                closeAllPopup={closeAllPopup}
-                                isOpened={isPopupMenu}
-                            />
-                            <Profile signOut={signOut} />
-                        </ProtectedRouteElement>
-                    }
-                />
-                <Route path="*" element={<NotFound />} />
-            </Routes>
-            <PopupMenu isOpened={isPopupMenu} />
+                        }
+                    />
+                    <Route
+                        path="/"
+                        element={
+                            <>
+                                <Header
+                                    isLogined={isLogined}
+                                    openPopupMenu={openPopupMenu}
+                                    closeAllPopup={closeAllPopup}
+                                    isOpened={isPopupMenu}
+                                />
+                                <Main />
+                                <Footer />
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/movies"
+                        element={
+                            <ProtectedRouteElement isLogined={isLogined}>
+                                <Header
+                                    isLogined={isLogined}
+                                    openPopupMenu={openPopupMenu}
+                                    closeAllPopup={closeAllPopup}
+                                    isOpened={isPopupMenu}
+                                />
+                                <Movies
+                                    addMoviesInLocalStoreg={
+                                        addMoviesInLocalStoreg
+                                    }
+                                />
+                                <Footer />
+                            </ProtectedRouteElement>
+                        }
+                    />
+                    <Route
+                        path="/saved-movies"
+                        element={
+                            <ProtectedRouteElement isLogined={isLogined}>
+                                <Header
+                                    isLogined={isLogined}
+                                    openPopupMenu={openPopupMenu}
+                                    closeAllPopup={closeAllPopup}
+                                    isOpened={isPopupMenu}
+                                />
+                                <SavedMovies
+                                    addMoviesInLocalStoreg={
+                                        addMoviesInLocalStoreg
+                                    }
+                                />
+                                <Footer />
+                            </ProtectedRouteElement>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <ProtectedRouteElement isLogined={isLogined}>
+                                <Header
+                                    isLogined={isLogined}
+                                    openPopupMenu={openPopupMenu}
+                                    closeAllPopup={closeAllPopup}
+                                    isOpened={isPopupMenu}
+                                />
+                                <Profile signOut={signOut} />
+                            </ProtectedRouteElement>
+                        }
+                    />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+                <PopupMenu isOpened={isPopupMenu} />
             </CurrentUserContext.Provider>
         </div>
     );
