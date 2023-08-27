@@ -51,7 +51,10 @@ function MoviesCardList({ isSaved, filteredMovies }) {
     }
 
     function countMoreMovies() {
-        setIsMore(filteredMovies.filteredMovies && isCountMovies <= filteredMovies.filteredMovies.length);
+        setIsMore(
+            filteredMovies && filteredMovies.filteredMovies &&
+                isCountMovies <= filteredMovies.filteredMovies.length
+        );
     }
 
     useEffect(() => {
@@ -60,25 +63,33 @@ function MoviesCardList({ isSaved, filteredMovies }) {
 
     return (
         <>
-            <section
-                className={`moviesCardList ${
-                    isSaved ? "moviesCardList__saved" : ""
-                }`}
-            >
-                {!filteredMovies.answer &&
-                    filteredMovies.filteredMovies.length &&
-                    filteredMovies.filteredMovies
-                        .slice(0, isCountMovies)
-                        .map((movie, index) => {
-                            return <MovieCard movie={movie} key={index} />;
-                        })}
-            </section>
-            {filteredMovies.answer && (
-                <p className="moviesCardList__answer">
-                    {filteredMovies.answer}
-                </p>
+            {Object.keys(filteredMovies).length > 0 && (
+                <>
+                    <section
+                        className={`moviesCardList ${
+                            isSaved ? "moviesCardList__saved" : ""
+                        }`}
+                    >
+                        {!filteredMovies.answer &&
+                            filteredMovies.filteredMovies.length &&
+                            filteredMovies.filteredMovies
+                                .slice(0, isCountMovies)
+                                .map((movie, index) => {
+                                    return (
+                                        <MovieCard movie={movie} key={index} />
+                                    );
+                                })}
+                    </section>
+                    {filteredMovies.answer && (
+                        <p className="moviesCardList__answer">
+                            {filteredMovies.answer}
+                        </p>
+                    )}
+                    {!isSaved && isMore && (
+                        <More handleaddMoreMovies={addMoreMovies} />
+                    )}
+                </>
             )}
-            {!isSaved && isMore && <More handleaddMoreMovies={addMoreMovies} />}
         </>
     );
 }

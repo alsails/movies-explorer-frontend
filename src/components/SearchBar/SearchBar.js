@@ -5,8 +5,11 @@ import search from "../../images/icons/search.svg";
 
 function SearchBar({ handleChange, values, filteredMovies, setValues }) {
     useEffect(() => {
-        setValues({searchValue: filteredMovies.searchValue})
-    }, [])
+        if (filteredMovies) {
+            setValues({ searchValue: filteredMovies.searchValue });
+        }
+    }, []);
+
     return (
         <div className="searchBar">
             <img

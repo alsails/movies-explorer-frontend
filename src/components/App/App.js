@@ -39,8 +39,9 @@ function App() {
     }
 
     function signOut() {
-        localStorage.removeItem("token");
+        localStorage.clear();
         setIsLogined(false);
+        setFilteredMovies([])
         navigate("/", { replace: true });
     }
 

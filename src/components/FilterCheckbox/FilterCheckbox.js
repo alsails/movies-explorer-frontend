@@ -5,7 +5,8 @@ import './FilterCheckbox.css';
 function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies}) {
 
     useEffect(() => {
-        setIsActiveShort(filteredMovies.isActiveShort)
+        if (filteredMovies) {
+        setIsActiveShort(filteredMovies.isActiveShort) }
     }, [])
 
     function switchOn() {
