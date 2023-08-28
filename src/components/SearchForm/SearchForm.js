@@ -6,7 +6,7 @@ import "./SearchForm.css";
 
 import { useForm } from "../../hooks/useForm";
 
-function SearchForm({ addMoviesInLocalStoreg, filteredMovies }) {
+function SearchForm({ searchMovies, filteredMovies }) {
     const { values, handleChange, setValues } = useForm({});
     const [isActiveShort, setIsActiveShort] = useState(false); // Добавляем состояние isActive
 
@@ -15,8 +15,7 @@ function SearchForm({ addMoviesInLocalStoreg, filteredMovies }) {
         if (!values.searchValue) {
             return;
         }
-
-        addMoviesInLocalStoreg({inputValue: values.searchValue, isActiveShort: isActiveShort})
+        searchMovies({inputValue: values.searchValue, isActiveShort: isActiveShort})
     };
 
     return (

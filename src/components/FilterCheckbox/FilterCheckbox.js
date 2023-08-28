@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
 
 
@@ -6,7 +6,7 @@ function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies}) {
 
     useEffect(() => {
         if (filteredMovies) {
-        setIsActiveShort(filteredMovies.isActiveShort) }
+        setIsActiveShort(JSON.parse(localStorage.getItem("isActiveShort"))) }
     }, [])
 
     function switchOn() {

@@ -1,13 +1,15 @@
 import More from "../More/More";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 
-function Movies({addMoviesInLocalStoreg, filteredMovies}) {
+function Movies({searchMovies, filteredMovies, onMovieSave, isPreloaderActive, savedMovies}) {
     const isSaved = false;
     return (
         <main>
-            <SearchForm filteredMovies = {filteredMovies} addMoviesInLocalStoreg={addMoviesInLocalStoreg} />
-            <MoviesCardList isSaved={isSaved} filteredMovies = {filteredMovies}/>
+            <SearchForm filteredMovies = {filteredMovies} searchMovies={searchMovies} />
+            <MoviesCardList isSaved={isSaved} filteredMovies = {filteredMovies} onMovieSave={onMovieSave} savedMovies={savedMovies}/>
+            <Preloader isPreloaderActive={isPreloaderActive}/>
         </main>
     );
 }

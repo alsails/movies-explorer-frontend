@@ -17,12 +17,20 @@ import api from "../../utils/MoviesApi";
 import * as mainApi from "../../utils/MainApi";
 import "./App.css";
 
+import { filterMoviesByDuration, filterMovies } from "../../utils/MoviesFilter";
+
 function App() {
     const bodyElement = document.querySelector("body");
     const [isPopupMenu, setIsPopupMenu] = useState(false);
     const [isLogined, setIsLogined] = useState(false);
-    const [movies, setMovies] = useState([]);
-    const [filteredMovies, setFilteredMovies] = useState(JSON.parse(localStorage.getItem("movies")));
+    const [isPreloader, setIsPreloader] = useState(false);
+    const [movies, setMovies] = useState(
+        JSON.parse(localStorage.getItem("allMovies"))
+    );
+    const [savedMovies, setSavedMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState(
+        JSON.parse(localStorage.getItem("filteredMovies"))
+    );
     const [currentUser, setCurrentUser] = useState({});
     const [error, setError] = useState("");
 
@@ -41,7 +49,7 @@ function App() {
     function signOut() {
         localStorage.clear();
         setIsLogined(false);
-        setFilteredMovies([])
+        setFilteredMovies([]);
         navigate("/", { replace: true });
     }
 
@@ -51,14 +59,14 @@ function App() {
 
     useEffect(() => {
         if (isLogined) {
-            api.getMovies()
-                .then((movies) => {
-                    setMovies(movies);
+            Promise.all([mainApi.getSavedMovies(), mainApi.getUserInfo()])
+                .then(([savedMovies, userInfo]) => {
+                    setCurrentUser(userInfo);
+                    setSavedMovies(savedMovies);
                 })
                 .catch((err) => {
                     console.log(err);
                 });
-            getUserInfo();
         }
     }, [isLogined]);
 
@@ -116,48 +124,75 @@ function App() {
             });
     }
 
-    function handelFilterMovies(inputValue, isActiveShort) {
-        const isRussianRegex = /[а-яА-ЯЁё]/.test(inputValue);
-
-        return movies.filter((movie) => {
-            const movieToCompare = isRussianRegex ? movie.nameRU : movie.nameEN;
-            const matchesMovies = movieToCompare
-                .toLowerCase()
-                .includes(inputValue.toLowerCase());
-
-            if (isActiveShort) {
-                return matchesMovies && movie.duration <= 40; 
-            }
-
-            return matchesMovies;
-        });
-    }
-
-    function addMoviesInLocalStoreg({ inputValue, isActiveShort }) {
-        const filterMovies = handelFilterMovies(inputValue, isActiveShort); 
-
-        if (filterMovies.length === 0) {
-            const dataToSave = {
-                searchValue: inputValue,
-                isActiveShort: isActiveShort,
-                answer: "Ничего не найдено",
+    function handleMovieSave(movie, isSaved) {
+        if (!isSaved) {
+            const movieData = {
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: `https://api.nomoreparties.co/beatfilm-movies${movie.image.url}`,
+                trailerLink: movie.trailerLink,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+                thumbnail: `https://api.nomoreparties.co/beatfilm-movies${movie.image.formats.thumbnail.url}`,
+                movieId: movie.id,
             };
-
-            localStorage.setItem("movies", JSON.stringify(dataToSave));
-            setFilteredMovies(dataToSave)
+            mainApi
+                .addMovie(movieData)
+                .then((newMovie) => {
+                    setSavedMovies((prevSavedMovies) => [
+                        ...prevSavedMovies,
+                        newMovie,
+                    ]);
+                })
+                .catch((err) => console.log(err));
         } else {
-            const dataToSave = {
-                searchValue: inputValue,
-                isActiveShort: isActiveShort,
-                filteredMovies: filterMovies,
-            };
-    
-            localStorage.setItem("movies", JSON.stringify(dataToSave));
-            setFilteredMovies(dataToSave)
+            mainApi
+                .delMovie(movie._id)
+                .then(() => {
+                    console.log('savedMovies 1 ', savedMovies)
+                    setSavedMovies((prevSavedMovies) =>
+                        prevSavedMovies.filter((c) => { 
+                            return c.movieId !== movie.movieId
+                        })
+                    );
+                })
+                .catch((err) => console.log(err));
         }
     }
 
-    window.addEventListener('storage', (event) => console.log(event));
+    function searchMovies({ inputValue, isActiveShort }) {
+        addMoviesInLocalStoreg({ inputValue, isActiveShort });
+    }
+
+    function addMoviesInLocalStoreg({ inputValue, isActiveShort }) {
+        localStorage.setItem("searchValue", JSON.stringify(inputValue));
+        localStorage.setItem("isActiveShort", isActiveShort);
+
+        if (localStorage.getItem("allMovies")) {
+            const filterData = filterMovies(movies, inputValue, isActiveShort);
+            setFilteredMovies(filterData);
+        } else {
+            setIsPreloader(true);
+            api.getMovies()
+                .then((movies) => {
+                    setMovies(movies);
+                    localStorage.setItem("allMovies", JSON.stringify(movies));
+                    const filterData = filterMovies(
+                        movies,
+                        inputValue,
+                        isActiveShort
+                    );
+                    setFilteredMovies(filterData);
+                })
+                .catch((err) => console.log(err))
+                .finally(() => {
+                    setIsPreloader(false); // Сброс прелоадера после завершения операций
+                });
+        }
+    }
 
     return (
         <div className="page">
@@ -209,10 +244,11 @@ function App() {
                                     isOpened={isPopupMenu}
                                 />
                                 <Movies
-                                    addMoviesInLocalStoreg={
-                                        addMoviesInLocalStoreg
-                                    }
-                                    filteredMovies = {filteredMovies}
+                                    searchMovies={searchMovies}
+                                    filteredMovies={filteredMovies}
+                                    onMovieSave={handleMovieSave}
+                                    isPreloaderActive={isPreloader}
+                                    savedMovies = {savedMovies}
                                 />
                                 <Footer />
                             </ProtectedRouteElement>
@@ -229,9 +265,10 @@ function App() {
                                     isOpened={isPopupMenu}
                                 />
                                 <SavedMovies
-                                    addMoviesInLocalStoreg={
-                                        addMoviesInLocalStoreg
+                                    savedMovies={
+                                        savedMovies
                                     }
+                                    onMovieSave={handleMovieSave}
                                 />
                                 <Footer />
                             </ProtectedRouteElement>

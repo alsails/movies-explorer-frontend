@@ -3,7 +3,7 @@ import "./MoviesCardList.css";
 import MovieCard from "../MovieCard/MovieCard";
 import More from "../More/More";
 
-function MoviesCardList({ isSaved, filteredMovies }) {
+function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
     const [isWidth, setIsWidth] = useState(window.innerWidth);
     const [isInitialCountMovies, setIsInitialCountMovies] = useState(
         getInitialCountMovies(isWidth)
@@ -52,8 +52,8 @@ function MoviesCardList({ isSaved, filteredMovies }) {
 
     function countMoreMovies() {
         setIsMore(
-            filteredMovies && filteredMovies.filteredMovies &&
-                isCountMovies <= filteredMovies.filteredMovies.length
+            filteredMovies &&
+                isCountMovies <= filteredMovies.length
         );
     }
 
@@ -63,33 +63,33 @@ function MoviesCardList({ isSaved, filteredMovies }) {
 
     return (
         <>
-            {Object.keys(filteredMovies).length > 0 && (
-                <>
-                    <section
-                        className={`moviesCardList ${
-                            isSaved ? "moviesCardList__saved" : ""
-                        }`}
-                    >
-                        {!filteredMovies.answer &&
-                            filteredMovies.filteredMovies.length &&
-                            filteredMovies.filteredMovies
-                                .slice(0, isCountMovies)
-                                .map((movie, index) => {
-                                    return (
-                                        <MovieCard movie={movie} key={index} />
-                                    );
-                                })}
-                    </section>
-                    {filteredMovies.answer && (
-                        <p className="moviesCardList__answer">
-                            {filteredMovies.answer}
-                        </p>
-                    )}
-                    {!isSaved && isMore && (
-                        <More handleaddMoreMovies={addMoreMovies} />
-                    )}
-                </>
-            )}
+            <>
+                <section
+                    className={`moviesCardList ${
+                        isSaved ? "moviesCardList__saved" : ""
+                    }`}
+                >
+                    {filteredMovies && filteredMovies.length > 0 &&
+                        filteredMovies
+                            .slice(0, isCountMovies)
+                            .map((movie, index) => {
+                                return (
+                                    <MovieCard
+                                        movie={movie}
+                                        key={index}
+                                        onMovieSave={onMovieSave}
+                                        savedMovies = {savedMovies}
+                                    />
+                                );
+                            })}
+                </section>
+                {filteredMovies && filteredMovies.length === 0 && (
+                    <p className="moviesCardList__answer">Ничего не найдено</p>
+                )}
+                {!isSaved && isMore && (
+                    <More handleaddMoreMovies={addMoreMovies} />
+                )}
+            </>
         </>
     );
 }

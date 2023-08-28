@@ -82,3 +82,43 @@ export const getUserInfo = () => {
         return data;
     });
 };
+
+export const addMovie = (data) => {
+    return request(`movies/me`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(data),
+    }).then((data) => {
+        return data;
+    });
+};
+
+export const delMovie = (data) => {
+    return request(`movies/${data}`, {
+        method: "DELETE",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+    }).then((data) => {
+        return data;
+    });
+};
+
+export const getSavedMovies = () => {
+    return request(`movies`, {
+        method: "GET",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+    }).then((data) => {
+        return data;
+    });
+};
