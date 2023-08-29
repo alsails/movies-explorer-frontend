@@ -17,7 +17,11 @@ import api from "../../utils/MoviesApi";
 import * as mainApi from "../../utils/MainApi";
 import "./App.css";
 
-import { filterMoviesByDuration, filterMovies } from "../../utils/MoviesFilter";
+import {
+    filterMoviesByName,
+    filterMoviesByDuration,
+    filterMovies,
+} from "../../utils/MoviesFilter";
 
 function App() {
     const bodyElement = document.querySelector("body");
@@ -31,6 +35,7 @@ function App() {
     const [filteredMovies, setFilteredMovies] = useState(
         JSON.parse(localStorage.getItem("filteredMovies"))
     );
+    const [savedFilterMovies, setSavedFilterMovies] = useState([]);
     const [currentUser, setCurrentUser] = useState({});
     const [error, setError] = useState("");
 
@@ -62,7 +67,8 @@ function App() {
             Promise.all([mainApi.getSavedMovies(), mainApi.getUserInfo()])
                 .then(([savedMovies, userInfo]) => {
                     setCurrentUser(userInfo);
-                    setSavedMovies(savedMovies);
+                    setSavedMovies(savedMovies.reverse());
+                    setSavedFilterMovies(savedMovies.reverse());
                 })
                 .catch((err) => {
                     console.log(err);
@@ -132,19 +138,23 @@ function App() {
                 duration: movie.duration,
                 year: movie.year,
                 description: movie.description,
-                image: `https://api.nomoreparties.co/beatfilm-movies${movie.image.url}`,
+                image: `https://api.nomoreparties.co${movie.image.url}`,
                 trailerLink: movie.trailerLink,
                 nameRU: movie.nameRU,
                 nameEN: movie.nameEN,
-                thumbnail: `https://api.nomoreparties.co/beatfilm-movies${movie.image.formats.thumbnail.url}`,
+                thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
                 movieId: movie.id,
             };
             mainApi
                 .addMovie(movieData)
                 .then((newMovie) => {
                     setSavedMovies((prevSavedMovies) => [
-                        ...prevSavedMovies,
                         newMovie,
+                        ...prevSavedMovies,
+                    ]);
+                    setSavedFilterMovies((prevSavedMovies) => [
+                        newMovie,
+                        ...prevSavedMovies,
                     ]);
                 })
                 .catch((err) => console.log(err));
@@ -153,8 +163,13 @@ function App() {
                 .delMovie(movie._id)
                 .then(() => {
                     setSavedMovies((prevSavedMovies) =>
-                        prevSavedMovies.filter((c) => { 
-                            return c.movieId !== movie.movieId
+                        prevSavedMovies.filter((c) => {
+                            return c.movieId !== movie.movieId;
+                        })
+                    );
+                    setSavedFilterMovies((prevSavedMovies) =>
+                        prevSavedMovies.filter((c) => {
+                            return c.movieId !== movie.movieId;
                         })
                     );
                 })
@@ -191,6 +206,22 @@ function App() {
                     setIsPreloader(false); // Сброс прелоадера после завершения операций
                 });
         }
+    }
+
+    function filterSaveMovies({ inputValue, isActiveShort }) {
+        let filterSaveMovies = [];
+
+        if (!isActiveShort && inputValue) {
+            filterSaveMovies = filterMoviesByName(savedMovies, inputValue);
+        } else if (isActiveShort && inputValue) {
+            filterSaveMovies = filterMoviesByDuration(
+                filterMoviesByName(savedMovies, inputValue), isActiveShort
+            );
+        } else if (isActiveShort) {
+            filterSaveMovies = filterMoviesByDuration(savedMovies, isActiveShort);
+        } else filterSaveMovies = savedMovies
+
+        setSavedFilterMovies(filterSaveMovies);
     }
 
     return (
@@ -247,7 +278,7 @@ function App() {
                                     filteredMovies={filteredMovies}
                                     onMovieSave={handleMovieSave}
                                     isPreloaderActive={isPreloader}
-                                    savedMovies = {savedMovies}
+                                    savedMovies={savedMovies}
                                 />
                                 <Footer />
                             </ProtectedRouteElement>
@@ -264,10 +295,12 @@ function App() {
                                     isOpened={isPopupMenu}
                                 />
                                 <SavedMovies
-                                    savedMovies={
-                                        savedMovies
-                                    }
+                                    searchMovies={filterSaveMovies}
+                                    filteredMovies={savedFilterMovies}
                                     onMovieSave={handleMovieSave}
+                                    isPreloaderActive={isPreloader}
+                                    savedMovies={savedMovies}
+                                    setSavedFilterMovies={setSavedFilterMovies}
                                 />
                                 <Footer />
                             </ProtectedRouteElement>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import SearchBar from "../SearchBar/SearchBar";
@@ -6,19 +6,17 @@ import "./SearchForm.css";
 
 import { useForm } from "../../hooks/useForm";
 
-function SearchForm({ searchMovies, filteredMovies }) {
+function SearchForm({ searchMovies, filteredMovies, isSaved }) {
     const { values, handleChange, setValues } = useForm({});
-    const [isActiveShort, setIsActiveShort] = useState(false); // Добавляем состояние isActive
+    const [isActiveShort, setIsActiveShort] = useState(false); 
+    const [isSearchSaveValue, setIsSearchSaveValue] = useState();// Добавляем состояние isActive
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        handleFilter()
+        handleFilterMovies(isActiveShort)
     };
 
-    function handleFilter(isActiveShort) {
-        if (!values.searchValue) {
-            return;
-        }
+    function handleFilterMovies(isActiveShort) {
         searchMovies({inputValue: values.searchValue, isActiveShort: isActiveShort})
     }
 
@@ -35,8 +33,10 @@ function SearchForm({ searchMovies, filteredMovies }) {
                         filteredMovies = {filteredMovies}
                         values = {values}
                         setValues = {setValues}
+                        isSaved={isSaved}
+                        isSearchSaveValue={isSearchSaveValue}
                     />
-                    <FilterCheckbox handleFilter={handleFilter} isActiveShort={isActiveShort} setIsActiveShort={setIsActiveShort} filteredMovies = {filteredMovies}/>
+                    <FilterCheckbox handleFilterMovies={handleFilterMovies}isActiveShort={isActiveShort} setIsActiveShort={setIsActiveShort} filteredMovies = {filteredMovies}/>
                 </form>
             </div>
         </section>

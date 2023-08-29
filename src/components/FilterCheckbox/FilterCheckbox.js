@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
 
 
-function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies, handleFilter}) {
+function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies, handleFilterMovies}) {
 
     useEffect(() => {
         if (filteredMovies) {
@@ -11,7 +11,7 @@ function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies, handle
 
     function switchOn() {
         setIsActiveShort(!isActiveShort);
-        handleFilter(!isActiveShort) 
+        handleFilterMovies(!isActiveShort) 
     }
 
   return (

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import "./MovieCard.css";
 
-function MovieCard({ movie, onMovieSave, savedMovies }) {
+function MovieCard({ movie, onMovieSave, savedMovies, isSaved }) {
     const hours = Math.floor(movie.duration / 60);
     const remainingMinutes = movie.duration % 60;
     const formattedDuration = `${
@@ -17,7 +17,6 @@ function MovieCard({ movie, onMovieSave, savedMovies }) {
         !isOwn ? onMovieSave(movie, isOwn) : onMovieSave(matchMovie, isOwn)
     }
 
-
     useEffect(() => {
         const userSavedMovies = savedMovies.filter((movie) => movie.owner._id === currentUser._id);
         const isMatchMovie = userSavedMovies.some((saveMovie) => saveMovie.nameRU === movie.nameRU);
@@ -25,6 +24,8 @@ function MovieCard({ movie, onMovieSave, savedMovies }) {
         setMatchMovie(matchData)
         setIsOwn(isMatchMovie);
     }, [currentUser, savedMovies, movie]);
+
+    const src = isSaved ? movie.image : `https://api.nomoreparties.co${movie.image.url}`
 
     return (
         <div className="moviesCard">
@@ -45,7 +46,7 @@ function MovieCard({ movie, onMovieSave, savedMovies }) {
             >
                 <img
                     className="moviesCard__img"
-                    src={`https://api.nomoreparties.co${movie.image.url}`}
+                    src={src}
                     alt={`Обложка фильма ${movie.nameRU}`}
                 />
             </a>

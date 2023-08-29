@@ -3,8 +3,12 @@ import { useEffect, useState } from 'react';
 import "./SearchBar.css";
 import search from "../../images/icons/search.svg";
 
-function SearchBar({ handleChange, values, filteredMovies, setValues }) {
-    const [isSearchValue, setIsSearchValue] = useState(JSON.parse(localStorage.getItem("searchValue")))
+function SearchBar({ handleChange, values, filteredMovies, setValues, isSaved, isSearchSaveValue }) {
+    const [isSearchValue, setIsSearchValue] = useState(() => {
+        if (!isSaved) {
+          return JSON.parse(localStorage.getItem("searchValue")) 
+        } 
+    });
 
     useEffect(() => {
         if (filteredMovies) {

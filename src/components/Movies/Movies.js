@@ -7,7 +7,7 @@ function Movies({searchMovies, filteredMovies, onMovieSave, isPreloaderActive, s
     const isSaved = false;
     return (
         <main>
-            <SearchForm filteredMovies = {filteredMovies} searchMovies={searchMovies} />
+            <SearchForm filteredMovies = {filteredMovies} searchMovies={searchMovies} isSaved={isSaved}/>
             <MoviesCardList isSaved={isSaved} filteredMovies = {filteredMovies} onMovieSave={onMovieSave} savedMovies={savedMovies}/>
             <Preloader isPreloaderActive={isPreloaderActive}/>
         </main>

@@ -3,7 +3,7 @@ import "./MoviesCardList.css";
 import MovieCard from "../MovieCard/MovieCard";
 import More from "../More/More";
 
-function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
+function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies, setSavedFilterMovies }) {
     const [isWidth, setIsWidth] = useState(window.innerWidth);
     const [isInitialCountMovies, setIsInitialCountMovies] = useState(
         getInitialCountMovies(isWidth)
@@ -52,7 +52,7 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
 
     function countMoreMovies() {
         setIsMore(
-            isCountMovies <= filteredMovies.length
+            filteredMovies && isCountMovies <= filteredMovies.length
         );
     }
 
@@ -60,9 +60,10 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
         countMoreMovies();
     }, [filteredMovies]);
 
-    console.log(filteredMovies)
-
-
+    useEffect(() => {
+        isSaved && setSavedFilterMovies(savedMovies)
+    }, [])
+    
     return (
         <>
             <>
@@ -71,9 +72,9 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
                         isSaved ? "moviesCardList__saved" : ""
                     }`}
                 >
-                    {filteredMovies.length > 0 &&
+                    {filteredMovies && filteredMovies.length > 0 &&
                         filteredMovies
-                            .slice(0, isCountMovies)
+                            .slice(0, `${!isSaved ? isCountMovies : filteredMovies.length}`)
                             .map((movie, index) => {
                                 return (
                                     <MovieCard
@@ -81,12 +82,16 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
                                         key={index}
                                         onMovieSave={onMovieSave}
                                         savedMovies = {savedMovies}
+                                        isSaved={isSaved}
                                     />
                                 );
                             })}
                 </section>
-                {filteredMovies.length === 0 && "filteredMovies" in localStorage && (
+                {!isSaved && filteredMovies && filteredMovies.length === 0 && "filteredMovies" in localStorage && (
                     <p className="moviesCardList__answer">Ничего не найдено</p>
+                )}
+                {isSaved && filteredMovies && filteredMovies.length === 0 && "filteredMovies" in localStorage && (
+                    <p className="moviesCardList__answer">Вы ничего не добавили в избранное</p>
                 )}
                 {!isSaved && isMore && (
                     <More handleaddMoreMovies={addMoreMovies} />

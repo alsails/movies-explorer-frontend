@@ -11,10 +11,13 @@ export const filterMoviesByName = (movies, inputValue, isActiveShort) => {
     });
 };
 
-export const filterMoviesByDuration = (movies) => {
-    return movies.filter((movie) => {
-        return movie.duration <= 40;
-    });
+export const filterMoviesByDuration = (movies, isActiveShort) => {
+    if (isActiveShort) {
+        return movies.filter((movie) => {
+            return movie.duration <= 40;
+        });
+    }
+    else return movies
 };
 
 export const filterMovies = (movies, inputValue, isActiveShort) => {
@@ -22,7 +25,7 @@ export const filterMovies = (movies, inputValue, isActiveShort) => {
     !isActiveShort
         ? (filterMovies = filterMoviesByName(movies, inputValue))
         : (filterMovies = filterMoviesByDuration(
-              filterMoviesByName(movies, inputValue)
+              filterMoviesByName(movies, inputValue), isActiveShort
           ));
 
     filterMovies.length > 0
