@@ -152,7 +152,6 @@ function App() {
             mainApi
                 .delMovie(movie._id)
                 .then(() => {
-                    console.log('savedMovies 1 ', savedMovies)
                     setSavedMovies((prevSavedMovies) =>
                         prevSavedMovies.filter((c) => { 
                             return c.movieId !== movie.movieId

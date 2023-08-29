@@ -27,7 +27,7 @@ export const filterMovies = (movies, inputValue, isActiveShort) => {
 
     filterMovies.length > 0
         ? localStorage.setItem("filteredMovies", JSON.stringify(filterMovies))
-        : localStorage.setItem("filteredMovies", JSON.stringify(["Ничего не найдено"]));
+        : localStorage.setItem("filteredMovies", JSON.stringify(filterMovies));
 
     return filterMovies
 };

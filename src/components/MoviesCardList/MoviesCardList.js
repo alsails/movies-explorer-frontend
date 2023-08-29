@@ -52,8 +52,7 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
 
     function countMoreMovies() {
         setIsMore(
-            filteredMovies &&
-                isCountMovies <= filteredMovies.length
+            isCountMovies <= filteredMovies.length
         );
     }
 
@@ -61,15 +60,18 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
         countMoreMovies();
     }, [filteredMovies]);
 
+    console.log(filteredMovies)
+
+
     return (
         <>
             <>
-                <section
+            <section
                     className={`moviesCardList ${
                         isSaved ? "moviesCardList__saved" : ""
                     }`}
                 >
-                    {filteredMovies && filteredMovies.length > 0 &&
+                    {filteredMovies.length > 0 &&
                         filteredMovies
                             .slice(0, isCountMovies)
                             .map((movie, index) => {
@@ -83,7 +85,7 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies }) {
                                 );
                             })}
                 </section>
-                {filteredMovies && filteredMovies.length === 0 && (
+                {filteredMovies.length === 0 && "filteredMovies" in localStorage && (
                     <p className="moviesCardList__answer">Ничего не найдено</p>
                 )}
                 {!isSaved && isMore && (
