@@ -12,11 +12,15 @@ function SearchForm({ searchMovies, filteredMovies }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        handleFilter()
+    };
+
+    function handleFilter(isActiveShort) {
         if (!values.searchValue) {
             return;
         }
         searchMovies({inputValue: values.searchValue, isActiveShort: isActiveShort})
-    };
+    }
 
     return (
         <section className="searchForm">
@@ -32,7 +36,7 @@ function SearchForm({ searchMovies, filteredMovies }) {
                         values = {values}
                         setValues = {setValues}
                     />
-                    <FilterCheckbox isActiveShort={isActiveShort} setIsActiveShort={setIsActiveShort} filteredMovies = {filteredMovies}/>
+                    <FilterCheckbox handleFilter={handleFilter} isActiveShort={isActiveShort} setIsActiveShort={setIsActiveShort} filteredMovies = {filteredMovies}/>
                 </form>
             </div>
         </section>
