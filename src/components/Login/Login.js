@@ -2,7 +2,7 @@ import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
 import { useFormWithValidation } from "../../hooks/useForm";
 
 function Login({ handleLogin, errorMessage, setError }) {
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     const handleSubmit = (e) => {
         e.preventDefault();

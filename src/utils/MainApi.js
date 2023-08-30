@@ -21,6 +21,7 @@ function request(endpoint, options) {
 }
 
 export const signup = ({ name, password, email }) => {
+    
     return request(`signup`, {
         method: "POST",
         headers: {
@@ -78,6 +79,23 @@ export const getUserInfo = () => {
             "Content-Type": "application/json",
         },
         credentials: "include",
+    }).then((data) => {
+        return data;
+    });
+};
+
+export const updateUserInfo = (data) => {
+    return request(`users/me`, {
+        method: 'PATCH',
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email
+      }),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+    },
+      credentials: 'include',
     }).then((data) => {
         return data;
     });

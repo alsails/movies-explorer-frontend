@@ -224,6 +224,13 @@ function App() {
         setSavedFilterMovies(filterSaveMovies);
     }
 
+    function handleUpdateInfo(data) {
+        mainApi.updateUserInfo(data).then((newInfo) => {
+            setCurrentUser(newInfo)
+        }).catch(err =>
+            console.log(err))
+    }
+
     return (
         <div className="page">
             <CurrentUserContext.Provider value={currentUser}>
@@ -316,7 +323,7 @@ function App() {
                                     closeAllPopup={closeAllPopup}
                                     isOpened={isPopupMenu}
                                 />
-                                <Profile signOut={signOut} />
+                                <Profile signOut={signOut} handleUpdateInfo={handleUpdateInfo}/>
                             </ProtectedRouteElement>
                         }
                     />

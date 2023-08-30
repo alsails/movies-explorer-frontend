@@ -7,6 +7,10 @@
     width: 100%;
 }
 
+.form {
+    width: 100%;
+}
+
 .form__title {
     color: #000;
     text-align: center;
@@ -30,6 +34,11 @@
 .form__info:first-of-type {
     border-bottom: 1px solid #e8e8e8;
     padding: 0 0 16px;
+}
+
+.form__info-error:first-of-type {
+    border-bottom: none;
+    padding: 0;
 }
 
 .form__info-title {
@@ -63,6 +72,27 @@
     outline: 0.2px solid #e8e8e8;
     border-radius: 2px;
 
+}
+
+.form__error {
+    color: #FF3055;
+    font-size: 10px;
+    font-weight: 400;
+
+    padding: 0;
+    margin: 0;
+
+    opacity: 0;
+    text-align: right;
+}
+
+.form__error_visible {
+    opacity: 1;
+    padding: 5px 0;
+}
+
+.form__error_visible:first-of-type {
+    border-bottom: 1px solid #e8e8e8;
 }
 
 .profile__edit {
