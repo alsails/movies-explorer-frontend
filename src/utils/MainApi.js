@@ -1,7 +1,4 @@
-const BASE_URL =
-    process.env.NODE_ENV === "production"
-        ? "https://api.mesto.for.photos.nomoredomains.monster"
-        : "http://localhost:3000";
+const BASE_URL = 'https://api.diploma.films.nomoreparties.sbs'
 
 function checkResponse(res) {
     if (res.ok) {
@@ -16,6 +13,7 @@ function request(endpoint, options) {
     return fetch(`${BASE_URL}/${endpoint}`, options)
         .then(checkResponse)
         .catch((error) => {
+            console.log('error', error)
             throw new Error(error);
         });
 }
