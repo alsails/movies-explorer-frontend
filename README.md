@@ -4,4 +4,4 @@
 
 Ссылка на пул реквест: https://github.com/alsails/movies-explorer-frontend/pull/2
 
-Ссылка на сайт: https://api.diploma.films.nomoreparties.sbs/
+Ссылка на сайт: https://diploma.films.nomoredomainsicu.ru
