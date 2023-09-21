@@ -1,15 +1,19 @@
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
-import { useForm } from "../../hooks/useForm";
+import { useFormWithValidation } from "../../hooks/useForm";
 
-function Login({ login }) {
-    const { values, handleChange } = useForm({});
+function Login({ handleLogin, errorMessage, setError }) {
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!values.email || !values.password) {
             return;
         }
+        handleLogin(values)
     };
+
+
+
 
     return (
         <main>
@@ -21,7 +25,10 @@ function Login({ login }) {
                     handleChange={handleChange}
                     onSubmit={handleSubmit}
                     values={values}
-                    login={login}
+                    errors={errors}
+                    isValid={isValid}
+                    errorMessage={errorMessage}
+                    setError={setError}
                 />
             </section>
         </main>

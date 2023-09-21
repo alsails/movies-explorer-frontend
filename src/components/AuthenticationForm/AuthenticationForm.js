@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import "./AuthenticationForm.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../images/icons/logo.svg";
 
 function AuthenticationForm({
@@ -9,16 +10,16 @@ function AuthenticationForm({
     values,
     handleChange,
     name,
-    login,
+    errors,
+    isValid,
+    errorMessage,
+    setError
 }) {
-    const navigate = useNavigate();
 
-    function authorization() {
-        if (name === "login") {
-            login();
-            navigate("/movies", { replace: true });
-        }
-    }
+    useEffect(() => {
+        setError('')
+    }, [])
+
     return (
         <div className="authenticationForm">
             <div className="authenticationForm__container">
@@ -51,6 +52,9 @@ function AuthenticationForm({
                                 maxLength="30"
                                 required
                             />
+                            <span className={`authenticationForm__form-error authenticationForm__form-error_name ${errors.name ? "authenticationForm__form-error_visible" : ""}`}>
+                                {errors.name}
+                            </span>
                         </>
                     )}
                     <lable className="authenticationForm__form-lable">E-mail</lable>
@@ -64,6 +68,9 @@ function AuthenticationForm({
                         placeholder="E-mail"
                         required
                     />
+                    <span className={`authenticationForm__form-error authenticationForm__form-error_email ${errors.email ? "authenticationForm__form-error_visible" : ""}`}>
+                        {errors.email}
+                    </span>
                     <lable className="authenticationForm__form-lable">Пароль</lable>
                     <input
                         id="password-input"
@@ -77,18 +84,20 @@ function AuthenticationForm({
                         maxLength="30"
                         required
                     />
-                    <span id="input-error" className="authenticationForm__form-error">
-                        При авторизации произошла ошибка. Токен не передан или
-                        передан не в том формате.
+                    <span className={`authenticationForm__form-error authenticationForm__form-error_password ${errors.password ? "authenticationForm__form-error_visible" : ""}`}>
+                        {errors.password}
+                    </span>
+                    <span id="input-error" className={`authenticationForm__form-error authenticationForm__form-error_form ${errorMessage ? "authenticationForm__form-error_visible" : ""}`}>
+                        {errorMessage}
                     </span>
                     <button
-                        onClick={authorization}
                         className={`authenticationForm__form-button ${
                             name === "register"
                                 ? "authenticationForm__form-button_regster"
                                 : ""
-                        }`}
+                        } ${!isValid && "authenticationForm__form-button_disable"}`}
                         type="submit"
+                        disabled={!isValid}
                     >
                         {buttonText}
                     </button>

@@ -1,9 +1,9 @@
 import './Preloader.css';
 
 
-function Preloader() {
+function Preloader({isPreloaderActive}) {
   return (
-    <div className="preloader">
+    <div className={`preloader ${isPreloaderActive ? 'preloader_active' : ''}`}>
         <div className="preloader__container">
             <span className="preloader__round"></span>
         </div>

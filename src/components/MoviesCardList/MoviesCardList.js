@@ -1,17 +1,103 @@
+import { useState, useEffect } from "react";
 import "./MoviesCardList.css";
-import movies from "../../utils/movies";
 import MovieCard from "../MovieCard/MovieCard";
 import More from "../More/More";
 
-function MoviesCardList({isSaved}) {
+function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies, setSavedFilterMovies }) {
+    const [isWidth, setIsWidth] = useState(window.innerWidth);
+    const [isInitialCountMovies, setIsInitialCountMovies] = useState(
+        getInitialCountMovies(isWidth)
+    );
+    const [isAddCountMovies, setAddCountMovies] = useState(
+        addCountMovies(isWidth)
+    );
+    const [isCountMovies, setIsCountMovies] = useState(isInitialCountMovies);
+
+    const [isMore, setIsMore] = useState(true);
+
+    useEffect(() => {
+        window.addEventListener("resize", function () {
+            setTimeout(() => {
+                setIsWidth(window.innerWidth);
+            }, 300);
+        });
+
+        setIsInitialCountMovies(getInitialCountMovies(isWidth));
+        setAddCountMovies(addCountMovies(isWidth));
+    }, [isWidth]);
+
+    useEffect(() => {
+        setIsCountMovies(isInitialCountMovies);
+    }, [isInitialCountMovies, isAddCountMovies]);
+
+    function getInitialCountMovies(width) {
+        if (width > 900) {
+            return 12;
+        } else if (width <= 900 && width > 550) {
+            return 8;
+        } else if (width <= 550) {
+            return 5;
+        }
+    }
+
+    function addCountMovies(width) {
+        if (width > 900) {
+            return 3;
+        } else return 2;
+    }
+
+    function addMoreMovies() {
+        setIsCountMovies((prevCount) => prevCount + isAddCountMovies);
+    }
+
+    function countMoreMovies() {
+        setIsMore(
+            filteredMovies && isCountMovies <= filteredMovies.length
+        );
+    }
+
+    useEffect(() => {
+        countMoreMovies();
+        setIsCountMovies(isInitialCountMovies);
+    }, [filteredMovies]);
+
+    useEffect(() => {
+        isSaved && setSavedFilterMovies(savedMovies)
+    }, [])
+    
     return (
         <>
-            <section className={`moviesCardList ${isSaved ? "moviesCardList__saved" : ''}`}>
-                {movies.slice(0, 12).map((movie, index) => {
-                    return <MovieCard movie={movie} key={index}/>;
-                })}
-            </section>
-            {!isSaved && <More />}
+            <>
+            <section
+                    className={`moviesCardList ${
+                        isSaved ? "moviesCardList__saved" : ""
+                    }`}
+                >
+                    {filteredMovies && filteredMovies.length > 0 &&
+                        filteredMovies
+                            .slice(0, `${!isSaved ? isCountMovies : filteredMovies.length}`)
+                            .map((movie, index) => {
+                                return (
+                                    <MovieCard
+                                        movie={movie}
+                                        key={index}
+                                        onMovieSave={onMovieSave}
+                                        savedMovies = {savedMovies}
+                                        isSaved={isSaved}
+                                    />
+                                );
+                            })}
+                </section>
+                {!isSaved && filteredMovies && filteredMovies.length === 0 && "filteredMovies" in localStorage && (
+                    <p className="moviesCardList__answer">Ничего не найдено</p>
+                )}
+                {isSaved && filteredMovies && filteredMovies.length === 0 && "filteredMovies" in localStorage && (
+                    <p className="moviesCardList__answer">Вы ничего не добавили в избранное</p>
+                )}
+                {!isSaved && isMore && (
+                    <More handleaddMoreMovies={addMoreMovies} />
+                )}
+            </>
         </>
     );
 }

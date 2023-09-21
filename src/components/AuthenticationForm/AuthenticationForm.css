@@ -19,8 +19,6 @@
 .authenticationForm__form {
     display: flex;
     flex-direction: column;
-
-    height: 380px;
 }
 
 .authenticationForm__form-lable {
@@ -65,14 +63,22 @@
     font-size: 10px;
     font-weight: 400;
 
-    margin: 0;
-    padding: 10px 0 0;
+    padding: 0;
+    margin: -10px 0 10px;
 
     opacity: 0;;
 }
 
 .authenticationForm__form-error_visible {
     opacity: 1;
+}
+
+.authenticationForm__form-error_password {
+    margin: 10px 0 0;
+}
+
+.authenticationForm__form-error_form {
+    margin: 10px 0 0;
 }
 
 .authenticationForm__form-button {
@@ -86,10 +92,15 @@
     font-size: 14px;
     font-weight: 500;
 
-    margin: 146px auto 30px;
+    margin: 147px auto 0;
     padding: 13px 0 15px;
 
     border: none;
+}
+
+.authenticationForm__form-button_disable {
+    background: #F8F8F8;
+    color: #C2C2C2;
 }
 
 .authenticationForm__form-button_regster {
@@ -99,6 +110,11 @@
 .authenticationForm__form-button:hover {
     cursor: pointer;
     opacity: .8;
+}
+
+.authenticationForm__form-button_disable:hover {
+    cursor: auto;
+    opacity: 1;
 }
 
 .authenticationForm__links {

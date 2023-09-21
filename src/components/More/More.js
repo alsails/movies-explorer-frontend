@@ -1,9 +1,9 @@
 import './More.css';
 
-function More() {
+function More({handleaddMoreMovies}) {
   return (
     <section className="more">
-        <button type='button' className="more__button">Ещё</button>
+        <button onClick={handleaddMoreMovies} type='button' className="more__button">Ещё</button>
     </section>
   );
 }

@@ -1,31 +1,42 @@
-import { useEffect, useState } from "react";
-import { useForm } from "../../hooks/useForm";
+import { useContext, useEffect, useState } from "react";
+import { useFormWithValidation } from "../../hooks/useForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext"
 import profile from "../../utils/profile";
 import "./Profile.css";
 
-function Profile({ signOut }) {
+function Profile({ signOut, handleUpdateInfo }) {
+    const currentUser = useContext(CurrentUserContext)
+
     const [isChange, setIsChange] = useState(false);
-    const { values, handleChange, setValues } = useForm({});
+    const { values, handleChange, setValues, errors, isValid, resetForm } = useFormWithValidation();
 
     const inputName = document.getElementById("name-input");
     const inputEmail = document.getElementById("email-input");
 
     useEffect(() => {
         setValues({
-            name: profile.name,
-            email: profile.email,
+            name: currentUser.name,
+            email: currentUser.email,
         });
     }, []);
+
+    useEffect(() => {
+        if (currentUser) {
+          resetForm(currentUser);
+        }
+      }, [currentUser, resetForm]);
 
     function handleSubmit(e) {
         e.preventDefault();
         inputName.disabled = true;
         inputEmail.disabled = true;
 
-        setValues({
-            name: inputName.value,
-            email: inputEmail.value,
-        });
+        const newInfo = {
+            name: values.name,
+            email: values.email
+        }
+
+        handleUpdateInfo(newInfo)
 
         setIsChange(false);
     }
@@ -51,7 +62,7 @@ function Profile({ signOut }) {
                         <h1 className="form__title">
                             Привет, {profile.name}!
                         </h1>
-                        <div className="form__info">
+                        <div className={`form__info ${errors.name ? "form__info-error" : ""}`}>
                             <lable className="form__info-title">Имя</lable>
                             <input
                                 type="text"
@@ -66,6 +77,9 @@ function Profile({ signOut }) {
                                 disabled
                             />
                         </div>
+                        <p className={`form__error ${errors.name ? "form__error_visible" : ""}`}>
+                                {errors.name}
+                            </p>
                         <div className="form__info">
                             <lable className="form__info-title">E-mail</lable>
                             <input
@@ -76,15 +90,18 @@ function Profile({ signOut }) {
                                 onChange={handleChange}
                                 value={values.email || ""}
                                 placeholder="E-mail"
-                                disabled
+                                disabled 
                             />
                         </div>
+                        <p className={`form__error ${errors.email ? "form__error_visible" : ""}`}>
+                                {errors.email}
+                            </p>
                         {isChange && (
                             <div className="form__save">
                                 <span className="form__save-error">
                                     При обновлении профиля произошла ошибка.
                                 </span>
-                                <button type="submit" className="form__save-button">
+                                <button type="submit" className={`form__save-button ${(!isValid || (values.name === currentUser.name && values.email === currentUser.email)) && "form__save-button_disable"}`} disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email)}>
                                     Сохранить
                                 </button>
                             </div>

@@ -16,6 +16,14 @@
     margin-bottom: 170px;
 }
 
+.moviesCardList__answer {
+    padding: 0;
+    margin: -27px 0 50px;
+
+    text-align: center;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 1158px) {
     .moviesCardList {
         max-width: calc(100% - 30px * 2);
@@ -42,7 +50,7 @@
     }
 }
 
-@media screen and (max-width: 570px) {
+@media screen and (max-width: 550px) {
     .moviesCardList {
         grid-template-columns: 1fr;
         margin-top: 49px;

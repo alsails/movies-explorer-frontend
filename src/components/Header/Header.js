@@ -1,15 +1,19 @@
 import "./Header.css";
 import logoMain from "../../images/icons/logo.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Link, NavLink} from "react-router-dom";
 
 function Header({ isLogined, openPopupMenu, closeAllPopup, isOpened }) {
-    const [isWidth, setisWidth] = useState(window.innerWidth);
+    const [isWidth, setIsWidth] = useState(window.innerWidth);
 
-    window.addEventListener('resize', function() {
-        setisWidth(window.innerWidth);
-    });
-
+    useEffect(() => {
+        window.addEventListener('resize', function() {
+            setTimeout(() => {
+                setIsWidth(window.innerWidth);
+            }, 300);
+        });
+    }, [])
+    
     function togglePopup() {
         isOpened ? closeAllPopup() : openPopupMenu()
     }

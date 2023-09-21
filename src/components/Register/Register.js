@@ -1,17 +1,17 @@
 import AuthenticationForm from "../AuthenticationForm/AuthenticationForm";
-import { useForm } from "../../hooks/useForm";
+import { useForm, useFormWithValidation } from "../../hooks/useForm";
 import "../AuthenticationForm/AuthenticationForm.css";
 
-function Register() {
-    let error;
-    const spanError = document.querySelector("form__error");
-    const { values, handleChange } = useForm({});
+function Register({ handleRegister, errorMessage, setError }) {
+    const { values, handleChange, errors, isValid, resetForm } =
+        useFormWithValidation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!values.email || !values.password || !values.name) {
             return;
         }
+        handleRegister(values);
     };
 
     return (
@@ -24,6 +24,10 @@ function Register() {
                     handleChange={handleChange}
                     onSubmit={handleSubmit}
                     values={values}
+                    errors={errors}
+                    isValid={isValid}
+                    errorMessage={errorMessage}
+                    setError={setError}
                 />
             </section>
         </main>

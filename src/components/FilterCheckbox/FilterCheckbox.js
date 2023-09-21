@@ -1,14 +1,17 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './FilterCheckbox.css';
 
 
-function FilterCheckbox() {
-    const [isActive, setIsActive] = React.useState(false);
+function FilterCheckbox({isActiveShort, setIsActiveShort, filteredMovies, handleFilterMovies}) {
+
+    useEffect(() => {
+        if (filteredMovies) {
+        setIsActiveShort(JSON.parse(localStorage.getItem("isActiveShort"))) }
+    }, [])
+
     function switchOn() {
-        if (isActive === true) {
-            setIsActive(false)
-        }
-        else setIsActive(true)
+        setIsActiveShort(!isActiveShort);
+        handleFilterMovies(!isActiveShort) 
     }
 
   return (
@@ -16,7 +19,7 @@ function FilterCheckbox() {
         <div className='filterCheckbox__container' >
             <label>
                 <input type="checkbox" name="checkboxName" className="checkbox"/>
-                <div className={`switch ${isActive ? 'switchOn' : ''}`} onClick={switchOn}></div>
+                <div className={`switch ${isActiveShort ? 'switchOn' : ''}`} onClick={switchOn}></div>
             </label>
             <p className='filterCheckbox__text'>Короткометражки</p>
         </div>
