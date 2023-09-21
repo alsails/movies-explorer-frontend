@@ -101,7 +101,7 @@ function Profile({ signOut, handleUpdateInfo }) {
                                 <span className="form__save-error">
                                     При обновлении профиля произошла ошибка.
                                 </span>
-                                <button type="submit" className={`form__save-button ${!isValid && "form__save-button_disable"}`} disabled={!isValid}>
+                                <button type="submit" className={`form__save-button ${(!isValid || (values.name === currentUser.name && values.email === currentUser.email)) && "form__save-button_disable"}`} disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email)}>
                                     Сохранить
                                 </button>
                             </div>

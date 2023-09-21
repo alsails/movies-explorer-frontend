@@ -31,7 +31,6 @@ function SearchBar({ handleChange, values, filteredMovies, setValues, isSaved, i
                 value={values.searchValue || ''}
                 onChange={handleChange}
                 placeholder="Фильм"
-                required
             />
             <button
                 type="submit"

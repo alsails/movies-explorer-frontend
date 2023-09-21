@@ -6,19 +6,31 @@
     border-bottom: 1px solid #E8E8E8;
 }
 
+.searchForm__form-error {
+    text-decoration: none;
+    color: #FF3055;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: start;
+
+    margin: 0 0 0 55px;
+    padding: 0 0 10px;
+}
+
 .searchForm__container {
     border-radius: 9px;
     background: #FDFDFD;
     box-shadow: 0px 3px 14px 0px rgba(0, 0, 0, 0.08);
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .searchForm__form {
     display: flex;
     width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -32,6 +44,12 @@
     .searchForm {
         padding-bottom: 109px;
         margin: 98px auto 80px;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .searchForm__form-error {
+        font-size: 12px;
     }
 }
 
@@ -53,5 +71,10 @@
     .searchForm__form {
         display: flex;
         flex-direction: column;
+    }
+
+    .searchForm__form-error {
+        margin: 10px 0 10px 10px;
+        padding: 0;
     }
 }

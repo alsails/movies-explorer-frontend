@@ -58,6 +58,7 @@ function MoviesCardList({ isSaved, filteredMovies, onMovieSave, savedMovies, set
 
     useEffect(() => {
         countMoreMovies();
+        setIsCountMovies(isInitialCountMovies);
     }, [filteredMovies]);
 
     useEffect(() => {

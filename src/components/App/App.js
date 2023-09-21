@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import ProtectedRouteElement from "../ProtectedRoute/ProtectedRoute";
 import Main from "../Main/Main";
@@ -22,12 +22,15 @@ import {
     filterMoviesByDuration,
     filterMovies,
 } from "../../utils/MoviesFilter";
+import InfoPopup from "../InfoPopup/InfoPopup";
 
 function App() {
     const bodyElement = document.querySelector("body");
     const [isPopupMenu, setIsPopupMenu] = useState(false);
+    const [isInfoPopup, setIsInfoPopup] = useState(false);
     const [isLogined, setIsLogined] = useState(false);
     const [isPreloader, setIsPreloader] = useState(false);
+    const [isStatus, setIsStatus] = useState(true);
     const [movies, setMovies] = useState(
         JSON.parse(localStorage.getItem("allMovies"))
     );
@@ -40,6 +43,8 @@ function App() {
     const [error, setError] = useState("");
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const startLocation = location.pathname
 
     function openPopupMenu() {
         setIsPopupMenu(true);
@@ -48,6 +53,7 @@ function App() {
 
     function closeAllPopup() {
         setIsPopupMenu(false);
+        setIsInfoPopup(false)
         bodyElement.style.overflow = "auto";
     }
 
@@ -85,7 +91,7 @@ function App() {
                     .then((res) => {
                         if (res) {
                             setIsLogined(true);
-                            navigate("/movies", { replace: true });
+                            navigate(startLocation, { replace: true });
                         }
                     })
                     .catch((err) => {
@@ -227,8 +233,13 @@ function App() {
     function handleUpdateInfo(data) {
         mainApi.updateUserInfo(data).then((newInfo) => {
             setCurrentUser(newInfo)
-        }).catch(err =>
-            console.log(err))
+        }).catch(err => {
+            setIsInfoPopup(true)
+            setIsStatus(false)
+        }).finally(() => {
+            setIsInfoPopup(true)
+            setIsStatus(true)
+        })
     }
 
     return (
@@ -330,6 +341,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
                 <PopupMenu isOpened={isPopupMenu} />
+                <InfoPopup isOpened={isInfoPopup} onClose={closeAllPopup} isStatus={isStatus}/>
             </CurrentUserContext.Provider>
         </div>
     );
